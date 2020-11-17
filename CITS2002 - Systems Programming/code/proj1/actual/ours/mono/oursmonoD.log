@@ -1,0 +1,52 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        300
+}
+process 2 100 {
+    exit        150
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      300    1      0      10    
+  (Ev X)    active      device        start     trans   
+
+  (Proc 1)  0      0      0      0      0      1      0      150    2      0      100   
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000115   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000120   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000170   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000175   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000225   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000230   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000280   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000285   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000335   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000340   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000390   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000395   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000445   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000495   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 50 485
+
+best 50 485

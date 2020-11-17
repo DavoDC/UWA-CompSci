@@ -1,0 +1,31 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        40
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      40     1      0      10    
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000055   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 100 45
+
+best 100 45

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=LCS
+comment1.params=
+comment1.target=LCS()
+comment2.params=s
+comment2.target=java.util.ArrayList\ allsubseqs(java.lang.String)
+comment2.text=\r\n\ Returns\ all\ subsequences\ of\ s.\r\n
+comment3.params=s1\ s2
+comment3.target=java.util.ArrayList\ lcss(java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ Returns\ all\ LCSs\ of\ s1\ and\ s2.\r\n
+comment4.params=s1\ s2
+comment4.target=java.lang.String\ lcsr(java.lang.String,\ java.lang.String)
+comment4.text=\r\n\ Returns\ one\ LCS\ of\ s1\ and\ s2\ using\ the\ recursive\ algorithm.\r\n
+comment5.params=s1\ s2
+comment5.target=java.lang.String\ lcsd(java.lang.String,\ java.lang.String)
+comment5.text=\r\n\ Returns\ one\ LCS\ of\ s1\ and\ s2\ using\ the\ DP\ algorithm.\r\n
+comment6.params=s1\ s2
+comment6.target=java.lang.String\ longer(java.lang.String,\ java.lang.String)
+comment6.text=\r\n\ Returns\ the\ longer\ of\ s1\ and\ s2.\r\n
+comment7.params=
+comment7.target=void\ compareLCSs()
+comment7.text=\r\n\ Runs\ the\ LCS\ algorithms.\ \r\n
+numComments=8

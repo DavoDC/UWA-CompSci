@@ -1,0 +1,43 @@
+Example of Five State Model from textbook
+Null → New: A new process is created to execute a program
+New → Ready: The OS will move a process from the New state to the Ready state when it is prepared to take on an additional process
+Ready → Running: When it is time to select a process to run, the OS chooses one of the processes in the Ready state
+Running → Exit: The currently running process is terminated by the OS if the process indicates that it has completed or if it aborts
+Running → Ready: The most common reason for this transition is that the running process has reached the maximum allowable time for uninterrupted execution; virtually all multiprogramming operating systems impose this type of time discipline(pretty sure this the time quantum)
+(In general, the term preemption is defined to be the reclaiming of a resource from a process before the process has finished using it. In this case, the resource is the processor itself. The process is executing and could continue to execute, but is preempted so another process can be executed)
+Running → Blocked: A process is put in the Blocked state if it requests something for which it must wait. A request to the OS is usually in the form of a system service call; that is, a call from the running program to a procedure that is part of the operating system code. For example, a process may request a service from the OS that the OS is not prepared to perform immediately. It can request a resource, such as a file or a shared section of virtual memory, that is not immediately available. Or the process may initiate an action, such as an I/O operation, that must be completed before the process can continue
+Blocked → Ready: A process in the Blocked state is moved to the Ready state when the event for which it has been waiting occurs
+
+Text Book Explanantion of Multiple blocked queues
+It would be more efficient to have a number of queues, one for each event.
+Then, when the event occurs, the entire list of processes in the appropriate queue can be moved to the Ready state
+
+Round Robin Scheduling
+ A clock interrupt is generated at periodic intervals
+ When the interrupt occurs, the currently running process is placed in the ready queue, and the next ready job is selected on a FCFS(First Come First Serve) basis
+ With round robin, the principal design issue is the length of the time quantum, or slice, to be used
+If the quantum is very short, then short processes will move through the system relatively quickly
+On the other hand, there is processing overhead involved in handling the clock interrupt and performing the scheduling and dispatching function
+One useful guide is that the time quantum should be slightly greater than the time required for a typical interaction or process function
+If it is less, then most processes will require at least two time quanta
+Refer to image in docs folder called TimeQuantum
+The first segment represents response time s from the point when the process allocated the time quantum to the point when the interaction is complete
+The remaining segment measures q minus s
+Part b: time quantum less than typical interactions
+Reponses time s is divided into three segments
+The first segment is quantum q, which extends from the point when the process allocated the time quantum to the point when the process is preempted
+The second segment represents the period during which the other processes run, ending at the time when the process allocated the time quantum
+The final segment ends when the interaction is complete
+Round robin is particularly effective in a general-purpose time-sharing system or transaction processing system
+
+Round Robin Scheduling from YouTube
+It is not depending on Burst Time
+Take a process and doesn't execute till completion
+Instead it executes it for a certain amount of time called time quantum
+Then it preempts the process and the next process waiting is run for that time quantum
+No process waits forever
+Select a process from Ready queue and check if the Burst Time(Time process needs to Run) is less than the time quantum then the process runs till completion
+If the Burst Time is greater than Time Quantum than the process is executed for TQ
+After it runs for TQ we check if it is complete, if not then start algorithm again(i.e. go back to ready state)
+
+

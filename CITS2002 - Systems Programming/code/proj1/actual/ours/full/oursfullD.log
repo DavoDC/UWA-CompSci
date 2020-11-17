@@ -1,0 +1,486 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        300
+}
+process 2 100 {
+    exit        150
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      300    1      0      10    
+  (Ev X)    active      device        start     trans   
+
+  (Proc 1)  0      0      0      0      0      1      0      150    2      0      100   
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000025   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000035   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000045   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000085   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000105   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000110   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000120   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000125   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000135   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000140   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000150   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000155   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000165   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000170   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000180   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000185   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000195   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000200   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000210   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000215   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000225   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000230   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000240   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000245   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000255   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000260   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000270   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000275   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000285   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000290   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000300   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000305   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000315   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000320   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000330   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000335   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000345   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000350   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000360   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000365   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000375   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000380   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000390   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000395   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000405   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000410   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000420   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000425   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000435   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000440   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000450   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000455   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000465   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000470   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000480   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000485   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000495   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000500   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000510   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000515   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000525   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000530   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000540   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000545   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000555   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000565   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000575   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000585   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000595   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000605   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000615   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 10 605
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000035   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000115   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000120   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000140   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000145   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000165   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000170   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000190   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000195   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000215   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000220   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000240   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000245   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000265   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000270   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000290   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000295   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000315   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000320   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000340   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000345   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000365   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000370   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000390   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000395   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000415   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000420   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000440   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000445   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000465   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000470   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000480   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000485   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000505   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000525   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000545   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 20 535
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000045   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000105   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000110   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000140   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000145   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000175   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000180   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000210   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000215   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000245   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000250   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000280   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000285   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000315   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000320   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000350   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000355   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000385   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000390   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000420   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000425   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000455   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000515   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 30 505
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000135   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000140   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000180   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000185   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000225   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000230   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000270   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000275   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000315   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000320   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000360   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000365   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000405   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000410   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000440   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000445   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000505   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 40 495
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000115   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000120   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000170   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000175   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000225   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000230   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000280   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000285   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000335   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000340   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000390   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000395   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000445   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000495   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 50 485
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000135   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000140   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000200   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000205   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000265   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000270   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000330   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000335   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000395   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000400   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000430   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000435   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000495   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 60 485
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000085   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000155   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000160   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000230   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000235   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000305   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000310   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000380   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000385   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000455   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000460   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000470   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000475   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000495   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 70 485
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000175   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000180   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000260   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000265   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000345   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000350   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000420   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000425   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 80 475
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000105   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000110   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000200   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000205   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000295   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000300   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000360   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000365   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000455   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 90 475
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000115   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000120   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000220   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000225   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000325   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000330   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000380   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000385   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 100 475
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000125   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000130   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000240   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000245   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000355   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000360   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000400   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000405   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 110 475
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000135   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000140   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000260   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000265   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000385   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000390   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000420   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000425   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 120 475
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000145   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000150   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000280   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000285   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000415   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000420   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000440   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000445   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 130 475
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000155   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000160   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000300   p2.expire,  p2.RUNNING->READY                                    Ne: Re:1|2| Ru: Ex: Bl:
+@00000305   p1.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:1| Ex: Bl:
+@00000445   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000450   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000460   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000465   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000485   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 140 475
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000165   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000170   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000320   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000325   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 150 465
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000175   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000180   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000330   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000335   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 160 465
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000185   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000190   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000340   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000345   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 170 465
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000195   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000200   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000350   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000355   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 180 465
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000205   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000210   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000360   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000365   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 190 465
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,                                              Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000100   p2.NEW->READY,                                                   Ne: Re:2| Ru:1| Ex: Bl:
+@00000215   p1.expire,  p1.RUNNING->READY                                    Ne: Re:2|1| Ru: Ex: Bl:
+@00000220   p2.READY->RUNNING (frTQ),                                        Ne: Re:1| Ru:2| Ex: Bl:
+@00000370   p2.RUNNING->EXIT                                                 Ne: Re:1| Ru: Ex:2| Bl:
+@00000375   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:2| Bl:
+@00000475   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|1| Bl:
+total_process_completion_time 200 465
+
+best 200 465

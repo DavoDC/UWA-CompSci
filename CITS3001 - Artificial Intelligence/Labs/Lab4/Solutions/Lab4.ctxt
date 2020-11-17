@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Lab4
+comment1.params=
+comment1.target=Lab4()
+comment2.params=n
+comment2.target=randomData(int)
+comment2.text=\r\n\ Returns\ a\ random\ set\ of\ n\ items,\ within\ defined\ parameters.\r\n\ Each\ item\ has\ a\ weight,\ a\ value,\ and\ an\ ID\r\n
+comment3.params=s\ kp
+comment3.target=void\ printknapsack(java.lang.String,\ java.util.ArrayList)
+comment3.text=\r\n\ Displays\ the\ knapsack\ kp\ labelled\ with\ s,\ and\ its\ value\ with\ the\ current\ items.\r\n
+numComments=4

@@ -1,0 +1,15 @@
+# one process, no I/O, process exits even before 1st time quantum expires.
+# Run with	/cslinux/bin/besttq-sample -v tfA 200
+#
+process 1 10 {
+    exit        40
+}
+
+# Using the web-interface
+# T: 0 = Reboot with TQ = 200
+# T: 10 = Process 1 moves from New to Ready and CS starts
+# T: 15 = Process 1 moves from Ready to Running
+# T: 55 = Process 1 ends and moves from Running to Exit
+# best 200 45
+# (TQ has no effect)
+# note the total time that process 1 is in the Running queue is 40us (which is the exit time)

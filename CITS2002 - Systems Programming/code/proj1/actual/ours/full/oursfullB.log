@@ -1,0 +1,277 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        300
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      300    1      0      10    
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000025   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000035   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000045   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000085   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000105   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000125   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000145   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000185   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000205   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000225   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000235   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000245   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000265   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000275   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000285   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000295   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000305   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 10 305
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000035   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000235   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000275   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000295   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 20 305
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000045   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000105   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000225   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000285   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 30 305
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000055   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000295   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 40 305
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000265   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 50 305
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000075   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 60 305
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000085   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000225   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000295   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 70 305
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000095   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 80 305
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,                                               Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000105   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000285   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 90 305
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 100 305
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000125   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000235   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 110 305
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000135   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000255   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 120 305
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000145   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000275   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 130 305
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000295   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 140 305
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 150 305
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 160 305
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000185   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 170 305
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000195   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 180 305
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000205   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 190 305
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,                                              Ne:1| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne: Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:
+@00000315   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:
+total_process_completion_time 200 305
+
+best 200 305

@@ -1,0 +1,37 @@
+// This document contains 'hints'/crucial info from Chris from help2002
+
+// GENERAL
+Our on-CPU scheduling is a round-robin approach, using the same time-quantum for each simulation.  
+You will observe different total completion times when different processes make different I/O 
+requests, which compete with each other for the use of the single data-bus.
+
+// PROCESS START TIME
+Process 1 starts at 200usecs after the reboot, process 2 480usecs after the reboot.
+Process 1 exits after it's executed (on the CPU) for 400usecs.
+Even if process 1 performed no I/O at all, it would finish (at least) 
+200+400 usecs after reboot.  
+
+Hello, the value 440800 is just a ‘made-up’ example,  it does not apply to the tracefile 
+listed on the project sheet.
+
+Also, please note, that process-2 does not end at 8005,  but ends when process-2 has spent 
+8005usecs executing ON THE CPU.
+
+// IO EVENTS AND TQ
+Of note, a process may perform I/O or exit part way through its allocated quantum - it doesn't
+only happen at the end.
+
+// DEVICE PRIORITY
+"On device priority - the device with the highest transfer-rate has the highest priority.
+If two or more processes request some I/O from different devices, the device with the 
+highest priority (fastest transfer rate) will get to acquire the databus first."
+
+Example:
+Process 1 is blocked and using Device 1 (faster)
+Process 2 is blocked and using Device 2 (slower)
+Device 1 has a higher priority (faster transfer rate), 
+so will get to acquire the databus first. 
+So Process 1 will back to running first, then Process 2
+
+"Yes, processes that have been blocked longer than others *for the same device* have priority over ones 
+blocked for less time, but the devices also have priorities base don their transfer rates."

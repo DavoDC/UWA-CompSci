@@ -1,0 +1,34 @@
+# two processes, no I/O, both processes execute for several time quanta each.
+# Run with	/cslinux/bin/besttq-sample -v tfD 50
+#
+process 1 10 {
+    exit        300
+}
+#
+process 2 100 {
+    exit        150
+}
+
+# Using the web-interface
+# T: 0 = Reboot with TQ =50
+# T: 10 = Process 1 moves from New to Ready and CS starts
+# T: 15 = Process 1 moves from Ready to Running
+# T: 65 = Process 1 remains in the Running queue
+# T: 100 = Process 2 moves from New to Ready
+# T: 115 = Process 1 is interrupted, Process 1 moves from Running to Ready and CS starts for Process 2
+# T: 120 = Process 2 moves from Ready to Running
+# T: 170 = Process 2 is interrupted, Process 2 moves from Running to Ready and CS starts for Process 1
+# T: 175 = Process 1 moves from Ready to Running
+# T: 225 = Process 1 is interrupted, Process 1 moves from Running to Ready and CS starts for Process 2
+# T: 230 = Process 2 moves from Ready to Running
+# T: 280 = Process 2 is interrupted, Process 2 moves from Running to Ready and CS starts for Process 1
+# T: 285 = Process 1 moves from Ready to Running
+# T: 335 = Process 1 is interrupted, Process 1 moves from Running to Ready and CS starts for Process 2
+# T: 340 = Process 2 moves from Ready to Running
+# T: 390 = Process 2 ends and moves from Running to Exit and CS starts
+# T: 395 = Process 1 moves from Ready to Running
+# T: 445 = Process 1 remains in the Running queue
+# T: 495 = Process 1 ends and moves from Running to Exit
+# best 50 485
+# note the total time that process 1 is in the Running queue is 300us (which is the exit time) 
+# note the total time that process 2 is in the Running queue is 150us (which is the exit time) 

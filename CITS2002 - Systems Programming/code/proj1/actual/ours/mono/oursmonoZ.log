@@ -1,0 +1,76 @@
+
+ #### TRACEFILE RAW #### 
+
+
+device    floppy      100000 bytes/sec
+device    usb         1500000  bytes/sec
+device    ssd        3000000 bytes/sec
+reboot
+
+process  11  0 {
+  i/o      0     usb   75
+  exit     55
+}
+
+process  12  10 {
+  i/o      5    floppy  150
+  exit     40
+}
+
+process  13  50 {
+  i/o      10    ssd  150
+  exit     200
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     100000                
+  (Dev 1) usb        1500000               
+  (Dev 2) ssd        3000000               
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) ssd        3000000               
+  (Dev 1) usb        1500000               
+  (Dev 2) floppy     100000                
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      55     11     0      0     
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           0          50      
+
+  (Proc 1)  0      0      0      0      0      1      1      40     12     0      10    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        15         1500    
+
+  (Proc 2)  0      0      0      0      15     2      1      200    13     0      50    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          ssd           60         50      
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000230   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 100 1660
+
+best 100 1660

@@ -1,0 +1,27 @@
+# two processes, no I/O, process 1 finishes before process 2 starts.
+# Run with	/cslinux/bin/besttq-sample -v tfC 50
+#
+process 1 10 {
+    exit        200
+}
+#
+process 2 400 {
+    exit        200
+}
+
+# Using the web-interface
+# T: 0 = Reboot with TQ = 50
+# T: 10 = Process 1 moves from New to Ready and CS starts
+# T: 15 = Process 1 moves from Ready to Running 
+# T: 65 = Process 1 remains in the Running queue
+# T: 115 = Process 1 remains in the Running queue
+# T: 165 = Process 1 remains in the Running queue
+# T: 215 = Process 1 ends and moves from Running to Exit
+# T: 400 = Process 2 moves from New to Ready and CS starts
+# T: 405 = Process 2 moves from Ready to Running
+# T: 455 = Process 2 remains in the Running queue
+# T: 505 = Process 2 remains in the Running queue
+# T: 555 = Process 2 remains in the Running queue
+# T: 605 = Process 2 ends and moves from Running to Exit
+# best 50 595
+# note the total time that process 1 is in the Running queue is 200us (which is the exit time) 

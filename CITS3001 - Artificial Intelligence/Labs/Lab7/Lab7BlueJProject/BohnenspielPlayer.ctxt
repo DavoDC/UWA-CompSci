@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=BohnenspielPlayer
+comment0.text=\r\n\ Implements\ an\ intelligent\ player\ for\ Bohnenspiel.\r\n
+comment1.params=f
+comment1.target=BohnenspielPlayer(Farbe)
+comment1.text=\r\n\ Constructs\ a\ Bohnenspiel\ player.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment2.text=\r\n\ Returns\ the\ player's\ name.\r\n
+comment3.params=
+comment3.target=Farbe\ getFarbe()
+comment3.text=\r\n\ Returns\ the\ player's\ colour.\r\n
+comment4.params=game
+comment4.target=int\ chooseMove(Bohnenspiel)
+comment4.text=\r\n\ Returns\ a\ legal\ move\ in\ game,\ i.e.\ a\ number\ h\ in\ [1,\ 6].\ h\ must\ denote\ a\r\n\ non-empty\ house\ on\ this\ player's\ side\ of\ the\ board.\ You\ can\ assume\ that\r\n\ at\ least\ one\ legal\ move\ is\ available.\ DO\ NOT\ RETURN\ AN\ ILLEGAL\ MOVE\ -\r\n\ that's\ an\ automatic\ loss\ of\ game.\r\n
+numComments=5

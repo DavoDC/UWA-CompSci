@@ -1,0 +1,1489 @@
+
+ #### TRACEFILE RAW #### 
+
+
+device    floppy      100000 bytes/sec
+device    usb         1500000  bytes/sec
+device    ssd        3000000 bytes/sec
+reboot
+
+process  11  0 {
+  i/o      0     usb   75
+  exit     55
+}
+
+process  12  10 {
+  i/o      5    floppy  150
+  exit     40
+}
+
+process  13  50 {
+  i/o      10    ssd  150
+  exit     200
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     100000                
+  (Dev 1) usb        1500000               
+  (Dev 2) ssd        3000000               
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) ssd        3000000               
+  (Dev 1) usb        1500000               
+  (Dev 2) floppy     100000                
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      55     11     0      0     
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           0          50      
+
+  (Proc 1)  0      0      0      0      0      1      1      40     12     0      10    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        15         1500    
+
+  (Proc 2)  0      0      0      0      15     2      1      200    13     0      50    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          ssd           60         50      
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+@00000080   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+@00000090   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+@00000100   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+@00000110   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READYp11.expire,  p11.RUNNING->READY           Ne: Re:13|11| Ru: Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p13.READY->RUNNING (frTQ),                                       Ne: Re:11| Ru:13| Ex: Bl:12|
+ T130 P12 is accessing floppy
+ T135 P12 is accessing floppy
+@00000135   p13.expire,  p13.RUNNING->READY                                  Ne: Re:11|13| Ru: Ex: Bl:12|
+ T140 P12 is accessing floppy
+@00000140   p11.READY->RUNNING (frTQ),                                       Ne: Re:13| Ru:11| Ex: Bl:12|
+ T145 P12 is accessing floppy
+@00000145   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T150 P12 is accessing floppy
+@00000150   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+@00000160   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+@00000170   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+@00000180   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+@00000190   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+@00000200   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+@00000210   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+@00000220   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+@00000230   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T235 P12 is accessing floppy
+@00000240   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000260   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000270   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000280   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000300   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000330   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001635   p12.freshTQ (ign'd)                                              Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001645   p12.freshTQ (ign'd)                                              Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001655   p12.freshTQ (ign'd)                                              Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 10 1660
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+@00000090   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+@00000110   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+@00000150   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+@00000170   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+@00000190   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+@00000210   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+@00000230   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T235 P12 is accessing floppy
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000270   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001645   p12.freshTQ (ign'd)                                              Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 20 1660
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+@00000100   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+@00000160   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+@00000190   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+@00000220   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000280   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001655   p12.freshTQ (ign'd)                                              Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 30 1660
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+@00000110   p11.freshTQ (ign'd)                                              Ne: Re: Ru:11| Ex: Bl:12|13|
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+@00000170   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+@00000210   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 40 1660
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READYp11.expire,  p11.RUNNING->READY           Ne: Re:13|11| Ru: Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p13.READY->RUNNING (frTQ),                                       Ne: Re:11| Ru:13| Ex: Bl:12|
+ T130 P12 is accessing floppy
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+@00000175   p13.expire,  p13.RUNNING->READY                                  Ne: Re:11|13| Ru: Ex: Bl:12|
+ T180 P12 is accessing floppy
+@00000180   p11.READY->RUNNING (frTQ),                                       Ne: Re:13| Ru:11| Ex: Bl:12|
+ T185 P12 is accessing floppy
+@00000185   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T190 P12 is accessing floppy
+@00000190   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000240   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000330   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 50 1660
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+@00000190   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 60 1660
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+@00000200   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000270   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 70 1660
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+@00000210   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 80 1660
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,  p11.NEW->READY,                              Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+@00000220   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 90 1660
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+@00000230   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+ T235 P12 is accessing floppy
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 100 1660
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000240   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 110 1660
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000250   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 120 1660
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000260   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 130 1660
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000270   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 140 1660
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000280   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 150 1660
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000290   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 160 1660
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000300   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 170 1660
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000310   p13.freshTQ (ign'd)                                              Ne: Re: Ru:13| Ex:11| Bl:12|
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 180 1660
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 190 1660
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,  p11.NEW->READY,                             Ne:12|13| Re:11| Ru: Ex: Bl:
+ T5 P11 is accessing usb
+@00000005   p11.READY->RUNNING (frTQ), p11.RUNNING->BLOCKED(usb)             Ne:12|13| Re: Ru: Ex: Bl:11|
+ T10 P11 is accessing usb
+@00000010   p12.NEW->READY,                                                  Ne:13| Re:12| Ru: Ex: Bl:11|
+ T15 P11 is accessing usb
+@00000015   p12.READY->RUNNING (frTQ),                                       Ne:13| Re: Ru:12| Ex: Bl:11|
+ T20 P11 is accessing usb
+@00000020   p12.RUNNING->BLOCKED(floppy)                                     Ne:13| Re: Ru: Ex: Bl:12|11|
+ T25 P11 is accessing usb
+ T30 P11 is accessing usb
+ T35 P11 is accessing usb
+ T40 P11 is accessing usb
+ T45 P11 is accessing usb
+ T50 P11 is accessing usb
+@00000050   p13.NEW->READY,                                                  Ne: Re:13| Ru: Ex: Bl:12|11|
+ T55 P11 is accessing usb
+@00000055   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex: Bl:12|11|
+ T60 P12 is accessing floppy
+@00000060   p11.BLOCKED(usb)->READY                                          Ne: Re:11| Ru:13| Ex: Bl:12|
+ T65 P13 is accessing ssd
+@00000065   p13.RUNNING->BLOCKED(ssd)                                        Ne: Re:11| Ru: Ex: Bl:12|13|
+ T70 P13 is accessing ssd
+@00000070   p11.READY->RUNNING (frTQ),                                       Ne: Re: Ru:11| Ex: Bl:12|13|
+ T75 P13 is accessing ssd
+ T80 P13 is accessing ssd
+ T85 P13 is accessing ssd
+ T90 P13 is accessing ssd
+ T95 P13 is accessing ssd
+ T100 P13 is accessing ssd
+ T105 P13 is accessing ssd
+ T110 P13 is accessing ssd
+ T115 P13 is accessing ssd
+ T120 P12 is accessing floppy
+@00000120   p13.BLOCKED(ssd)->READY                                          Ne: Re:13| Ru:11| Ex: Bl:12|
+ T125 P12 is accessing floppy
+@00000125   p11.RUNNING->EXIT                                                Ne: Re:13| Ru: Ex:11| Bl:12|
+ T130 P12 is accessing floppy
+@00000130   p13.READY->RUNNING (frTQ),                                       Ne: Re: Ru:13| Ex:11| Bl:12|
+ T135 P12 is accessing floppy
+ T140 P12 is accessing floppy
+ T145 P12 is accessing floppy
+ T150 P12 is accessing floppy
+ T155 P12 is accessing floppy
+ T160 P12 is accessing floppy
+ T165 P12 is accessing floppy
+ T170 P12 is accessing floppy
+ T175 P12 is accessing floppy
+ T180 P12 is accessing floppy
+ T185 P12 is accessing floppy
+ T190 P12 is accessing floppy
+ T195 P12 is accessing floppy
+ T200 P12 is accessing floppy
+ T205 P12 is accessing floppy
+ T210 P12 is accessing floppy
+ T215 P12 is accessing floppy
+ T220 P12 is accessing floppy
+ T225 P12 is accessing floppy
+ T230 P12 is accessing floppy
+ T235 P12 is accessing floppy
+@00000320   p13.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13| Bl:12|
+@00001620   p12.BLOCKED(floppy)->READY                                       Ne: Re:12| Ru: Ex:11|13| Bl:
+@00001625   p12.READY->RUNNING (frTQ),                                       Ne: Re: Ru:12| Ex:11|13| Bl:
+@00001660   p12.RUNNING->EXIT                                                Ne: Re: Ru: Ex:11|13|12| Bl:
+total_process_completion_time 200 1660
+
+best 200 1660

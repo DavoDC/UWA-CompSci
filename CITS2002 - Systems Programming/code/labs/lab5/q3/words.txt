@@ -1,0 +1,5 @@
+love
+good
+fair
+true
+wonderful

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Cell
+comment0.text=\r\n\ A\ cell\ in\ the\ table\ for\ the\ DP\ LCS\ algorithm\r\n
+comment1.params=len\ dir
+comment1.target=Cell(int,\ Direction)
+comment2.params=
+comment2.target=int\ getLen()
+comment3.params=
+comment3.target=Direction\ getDir()
+comment4.params=
+comment4.target=java.lang.String\ print()
+numComments=5

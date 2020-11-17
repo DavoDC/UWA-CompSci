@@ -1,0 +1,44 @@
+/**
+     * Get a sequence of words using only target characters
+     *
+     * @param useAll True means use all characters
+     * @return
+     */
+    private static ArrayList<String> getSeqRec(boolean useAll) {
+
+        // Reset global variables
+        validFound = false;
+        bestSeq = null;
+        bestSeqLen = 0;
+
+        // Initialize root node with starting word
+        Node root = new Node(curStart);
+
+        // Add steps recursively
+        addStepsRec(root, useAll);
+
+        // Return best sequence found
+        return bestSeq;
+    }
+
+    /**
+     * Add the next possible steps to a given node, and recursively generate
+     * children
+     *
+     * @param n
+     */
+    private static void addStepsRec(Node node, boolean useAll) {
+
+        // Add steps forward
+        addSteps(node, useAll);
+
+        // For each child
+        for (int i = 0; i < node.getChildCount(); i++) {
+
+            // Retrieve child
+            Node child = (Node) node.getChildAt(i);
+
+            // Add steps forward
+            addStepsRec(child, useAll);
+        }
+    }

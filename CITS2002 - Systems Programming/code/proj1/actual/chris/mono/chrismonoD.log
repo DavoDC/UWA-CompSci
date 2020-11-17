@@ -1,0 +1,22 @@
+@00000000   reboot with TQ=50                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000065   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000100   p2.NEW->READY                                                         (running=p1  RQ=[2]  nexit=0)
+@00000115   p1.expire,  p1.RUNNING->READY                                         (running=__  RQ=[2,1]  nexit=0)
+@00000120   p2.READY->RUNNING                                                     (running=p2  RQ=[1]  nexit=0)
+@00000170   p2.expire,  p2.RUNNING->READY                                         (running=__  RQ=[1,2]  nexit=0)
+@00000175   p1.READY->RUNNING                                                     (running=p1  RQ=[2]  nexit=0)
+@00000225   p1.expire,  p1.RUNNING->READY                                         (running=__  RQ=[2,1]  nexit=0)
+@00000230   p2.READY->RUNNING                                                     (running=p2  RQ=[1]  nexit=0)
+@00000280   p2.expire,  p2.RUNNING->READY                                         (running=__  RQ=[1,2]  nexit=0)
+@00000285   p1.READY->RUNNING                                                     (running=p1  RQ=[2]  nexit=0)
+@00000335   p1.expire,  p1.RUNNING->READY                                         (running=__  RQ=[2,1]  nexit=0)
+@00000340   p2.READY->RUNNING                                                     (running=p2  RQ=[1]  nexit=0)
+@00000390   p2.RUNNING->EXIT                                                      (running=__  RQ=[1]  nexit=1)
+@00000395   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=1)
+@00000445   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=1)
+@00000495   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=2)
+total_process_completion_time 50 485
+
+best 50 485

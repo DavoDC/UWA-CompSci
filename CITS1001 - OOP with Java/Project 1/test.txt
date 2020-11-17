@@ -1,0 +1,60 @@
+In each pair of lines below: the second line is a sequence of numbers, 
+and the first line is the simplest polynomial that generates that sequence. 
+
+solveFileSequences tries to process any line that starts with a digit or with a '-'. 
+If you modify the file to add extra sequences, stick to this rule! 
+
+
+# - 7
+-7
+
+# 19
+19
+
+# 0
+0
+
+
+
+# - 2
+-2, -2
+
+# x
+1, 2
+
+# - 9x
+-9, -18
+
+# 5x
+5, 10
+
+# 8x - 12
+-4, 4
+
+
+
+# 5
+5, 5, 5
+
+# 10x
+10, 20, 30
+
+# 2x^2
+2, 8, 18
+
+# - 3x + 3
+0, -3, -6
+
+# x^2 - 8
+-7, -4, 1
+
+# x^2 - 2x
+-1, 0, 3
+
+# 2x^2 - 100x + 1001
+903, 809, 719
+
+
+
+# x^7 - x^6 + x^5 - x^4 + x^3 - x^2 + x - 1
+0, 85, 1640, 13107, 65104, 239945, 720600, 1864135

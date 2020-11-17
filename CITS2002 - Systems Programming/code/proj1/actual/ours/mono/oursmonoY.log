@@ -1,0 +1,116 @@
+
+ #### TRACEFILE RAW #### 
+
+
+device    usb      1000000 bytes/sec
+reboot
+
+process 1 0 {
+    i/o     0   usb 100
+    exit        50
+}
+
+
+process 21 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+process 22 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+
+
+process 31 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 32 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 33 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) usb        1000000               
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) usb        1000000               
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      50     1      0      0     
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           0          100     
+
+  (Proc 1)  0      0      0      0      0      1      1      100    21     0      55    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           65         100     
+
+  (Proc 2)  0      0      0      0      65     2      1      100    22     0      55    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           65         100     
+
+  (Proc 3)  0      0      0      0      65     3      1      100    31     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+  (Proc 4)  0      0      0      0      70     4      1      100    32     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+  (Proc 5)  0      0      0      0      70     5      1      100    33     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 100 730
+
+best 100 730

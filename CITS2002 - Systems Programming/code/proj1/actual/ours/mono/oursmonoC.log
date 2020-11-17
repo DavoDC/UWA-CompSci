@@ -1,0 +1,46 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        200
+}
+process 2 400 {
+    exit        200
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      200    1      0      10    
+  (Ev X)    active      device        start     trans   
+
+  (Proc 1)  0      0      0      0      0      1      0      200    2      0      400   
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:1|2| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2| Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne:2| Re: Ru:1| Ex: Bl:
+@00000215   p1.RUNNING->EXIT                                                 Ne:2| Re: Ru: Ex:1| Bl:
+@00000400   p2.NEW->READY,                                                   Ne: Re:2| Ru: Ex:1| Bl:
+@00000405   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex:1| Bl:
+@00000455   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:1| Bl:
+@00000505   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:1| Bl:
+@00000555   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:1| Bl:
+@00000605   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1|2| Bl:
+total_process_completion_time 50 595
+
+best 50 595

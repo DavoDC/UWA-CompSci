@@ -1,0 +1,162 @@
+Tracefile E, tq = 50, 1 I/O event and 1 process
+@50us Proces 5 moves from New to Ready 
+@55us Process moves from Ready to Running 
+@275 55+220, Process 5 moves from Running to Blocked(disk) and requests data bus), note time before that was 255, so time in the running queue before the process moves to block is 220us
+@280 receives data bus and I/O event starts
+@19030 Process 5 moves from Blocked to Ready ((1500/80000)*10^6) = 18750, 280+18750 = 19030
+Process 5 is in the running queue for 600us(exit time), ((105-55)+(205-155)+(255-205)+(275-255)+(19085-19035)+(19135-19085)+(19185-19135)+(19235-19185)+(19285-19235)+(19335-19285)+(19385-19335)+(19415-19385))= 600
+
+Tracefile F, tq = 50, mulitple I/O events that have the same start times and 1 process
+@50us Moves from New to Ready
+@55us Moves from Ready to Running
+@275 which is 55+220 (moves from Running to Blocked(floppy) and requests data bus), note time before that was 255, so time in the running queue before the process moves to block is 220us
+@280 receives data bus and I/O event 1 starts
+@70280 Process 5 moves from Blocked to Ready ((2100/30000)*10^6 = 70000), 70000+280 = 70280
+@70285 Process 5 moves from Ready to Running,(Process 5 moves from Running to Blocked(floppy) and requests data bus) (because start time of I/O events are the same))
+@70290 receives data bus and I/O event 2 starts
+@123624 Process 5 moves from Blocked to Ready ((1600/30000)*10^6 = 53333.33333), 53333.33333+70290 = 123623.3333 (must be rounding up = 123624)
+@123629 Process 5 moves from Ready to Running, (Process 5 moves from Running to Blocked(floppy) and requests data bus)
+@123634 receives data bus and I/O event 3 starts
+@193634 Process 5 moves from Blocked to Ready ((2100/30000)*10^6 = 70000), 70000+123634 = 193634
+@193639 Process 5 moves from Ready to Running, (Process 5 moves from Running to Blocked(floppy) and requests data bus)
+@193644 receives data bus and I/O event 4 starts
+@246978 Process 5 moves from Blocked to Ready ((1600/30000)*10^6 = 53333.33333), 53333.333333+193644 = 246977.3333 (must be rounding up = 246978)
+Process 5 should be in the running queue for 1600
+
+Tracefile G, tq =50, two processes, one process has no I/O events and the other process has multiple  I/O events which have the same start time
+@200us Process 2 moves from New to Ready
+@205us Process 2 moves from Ready to Running
+@255us Process 2 got TQ
+@280us Process 5 moves from New to Ready
+@305us Process 2 expires and is moved from Running to Ready and CS starts for Process 5
+@310us Process 5 is moved from Ready to Running
+@360us Process 5 expires and is moved from Running to Ready and CS starts for Process2
+@770us Process 5 is moved from Running to Blocked (floppy) and requests data bus, ((360-310)+(470-420)+(580-530)+(690-640)+(770-750))=220us
+@775us Process 5 receives databus and I/O event 1 starts
+@775us Process 2 is moved from Ready to Running
+@775-2275, Process 2 is in the running queue, whilst process 5 is still transferring data in the blocked queue
+@2275 Process 2 exits, it is has been Running for a total of 1800us
+@70775, Process 5 moves from Blocked to Ready, ((2100/30000) x 10^6 = 70000), 775us + 70000 = 70775us
+@70780, Process 5 moves from Ready to Running, Process 5 moves from Running to Blocked(floppy) and requests data bus
+@70785, Process 5 receives databus and I/O event 2 starts
+@224119, Process 5 moves from Blocked to Ready, ((4600/30000) x 10^6 = 153333.33333), 153334us + 70785 = 224119
+@224124, Process 5 moves from Ready to Running, Process 5 moves from Running to Blocked(floppy) and requests data bus
+@224129, Process 5 receives databus and I/O event 3 starts 
+@294129, Process 5 moves from Blocked to Ready, ((2100/30000) x 10^6 = 70000), 224129+70000 = 294129
+@294129-697848, Process 5 does a bunch of I/O events
+@697848 Process 5 moves from Blocked to READY
+@697853 Process 5 moves from Ready to RUNNING
+@697853-699033-Process 5 remains in running queue
+@690033, Process 5 exits, it has been in the running queue for 1400us
+
+Tracefile H, tq = 50, two processes, both compute and perform several I/O operations
+@240us Process 2 moves from New to Ready
+@245us Process 2 moves from Ready to Running
+@280us Process 5 moves from New to Ready
+@295us Process 2 is interrupted and moves from Running to Ready
+@300us Process 5 moves from Ready to Running
+@300-735 Process 2 and 5 switch couple of times
+@735 Process 2 moves from Running to Blocked(floppy) and requests data bus, ((295-245)+(405-355)+(515-465)+(625-575)+(735-685)) = 250us
+@740 Process 2 receives the databus, I/O event 1 for Process 2 starts and Process 5 moves from Ready to Running
+@790-860-Process 5 remains in the Running queue
+@860 Process 5 moves from Running to Blocked(floppy) but remember process 2 is still doing its I/O event i.e. first come first serve ((350-300)+(460-410)+(570-520)+(680-630)+(790-740)+(840-790)+(860-840)) = 320
+@74074 Process 2 moves from Blocked to Ready and Process 5 requests databus, ((2200/30000) x 10^6 = 73333.33)), 73334 + 740 = 74074
+@74079 Process 2 moves from Ready to Running and Process 5 receives the databus and I/O event 1 starts for Process 5
+@74109 Process 2 moves from Running to Blocked(floppy), (74109-74079 = 30us, 280-250 = 30us (in terms of relative time), but remember process 5 is still doing its I/O event
+@110746 Process 5 moves from Blocked to Ready and Process 2 requests the databus, ((1100/30000) x10^6 = 36666.66), 36667 + 74079 = 110746
+@110751 Process 5 moves from Ready to Running and Process 2 receives the data bus and I/O event 2 starts for Process 2
+@110801 Process 5 ignores time quantum, 110801-110751 = 50
+@110841 Process 5 moves from Running to Blocked(floppy), ((110841-110751 = 90, 410-320 = 90(relative time), but remeber Process 2 is still doings it I/O event
+@264085 Process 2 moves from Blocked(floppy) to Ready and Process 5 requests the databus, ((4600/30000)x10^6 = 153333.33), 153334 + 110751 = 264085
+@264090 Process 2 moves from Ready to Running and Process 5 receives the databus and I/O event 2 starts for Process 5
+@264130 Process 2 moves from Running to Blocked(floppy), (264130 - 264090 = 40us, 320-280 = 40us (relative time)), but remeber process 5 is still doing its I/O event
+@417424 Process 5 moves from Blocked to Ready and Process 2 requests the databus, ((4600/30000)x10^6 = 153333.33), 153334 + 264090 = 417424
+@417429 Process 5 moves from Ready to Running and Process 2 receives the databus and I/O event 3 starts for Process 2
+@417429-417579 Process 5 ignores time quantum a few times as there is nothing in the ready queue
+@417599 Process 5 moves from Running to Blocked(floppy), ((417579-417429)+(417599-417579) = 170), (580-410 = 170us (relative time)), but remeber process 2 is still doing its i/o event
+@532096 Process 2 moves from Blocked(floppy) to Ready and Process 5 requests the databus ((3440/30000)x10^6 = 114666.67), 114667+417429 = 532096
+@532101 Process 2 moves from Ready to Running and Process 5 recieves the databus and I/O event 3 starts for Process 5
+@532101-532351 Process 2 ignores time quantum a few times as there is nothing in the ready queue
+@532381 Process 2 moved from Running to Blocked(floppy), ((532351-532101)+(532381-532351) = 280), (600-320 = 280us (relative time), but rember process 5 is still doing its i/o event
+@652435 Process 5 moves from Blocked to Ready and Process 2 requests the databus ((3610/30000)x10^6 = 120333.33)), 120334 + 532101 = 652435
+@652440 Process 5 moves from Ready to Running and Process 2 recieves the databus and i/o event 4 starts for process 2
+@652440-652540 Process 5 ignores the time quantum 
+@652580 Process 5 moves from Running to Blocked(floppy), ((652540-652440)+(652580-652540) = 140us), (720-580 = 140us (relative time)) but remeber process 2 is still doing its i/o event
+@705774 Process 2 moves from Blocked to Ready and Process 5 requests the databus, ((1600/30000)x10^6 = 53333.33)), 53334 + 652440 = 705774
+@705779 Process 2 moves from Ready to Running and Process 5 recieves the databus and I/O event 4 starts for process 5
+@705779-706279 Process 2 ignores a few time quantums as there is nothing in the ready queue
+@706279 Process 2 ends and moves from running to exit, Process 2 should have been in the running queue for a total of 1100us
+@759113 Process 5 moves from Blocked to Ready, ((1600/30000)x10^6 = 53333.33)), 53334 + 705779 = 759113us
+@759118 Process 5 moves from Ready to Running as there is nothing in the ready queue
+@759118-759598 Process 5 ignores a few time quantums as there is nothing in the ready queue
+@759598 Process 5 ends and moves from Running to Exit it should have been in the running queue for a total of 1200us
+
+Tracefile M, 8 overlapping process, no I/O, tq = 50
+Process 1 moves from New to Ready @10us and moves to Running @15us
+Since there is nothing else in the Ready queue ignores the time quantum for a few times
+@220us Process 2 moves from New to Ready
+@265us Process 1 moves from Running to Ready
+@270us Process 2 moves from Ready to Running
+For each time quantum interval they keep swapping
+Until Process 3 moves from New to Ready @330
+Process eventually moves into running @435
+So basically what is happening here:
+-is that the tracefile starts with just a single process that moves from new to ready and then ready to running
+-then another process moves from new to ready and once the time quantum interval occurs the process in the running moves to the ready 
+-and the one in the ready moves to running after 5us due to CS
+-then as more processes get added onto the ready queue based on their start times each process takes turns pretty much to be in the running queue
+-i.e. what is the first element in the ready queue moves onto the running queue(given that something isn't there already) and then it runs for the time quantum
+-then after that it moves to the end of the queue and everyting else moves one place closer to the front of the queue
+-and the process that is now in the front of the ready queue moves to the running queue
+-this continues to happen until every single process has finshed (i.e. moved from running to exit) this based on the exit time
+
+Discrepancies
+
+	For tracefile G:
+		-all time stamps, time quantums and transitions match
+		-but for TQ 50
+		- the total process completion times don't match
+		-e.g. @ TQ = 50:
+			O: total_process_completion_time 50 698823
+			C: total_process_completion_time 50 698833
+			-final time stamp = 699033
+			-start time of process 2 is 200, so has to be 699033-200 = 698833
+		-Everything is fine for TQ = 60
+		-Same problem for TQ = 70:
+			O: total_process_completion_time 70 698823
+			C: total_process_completion_time 70 698873
+			-final time stamp = 699073
+			-start time of process 2 is 200, so has to be 699073 - 200 = 698873
+		-Everything is fine fpr TQ = 80
+		-Total Process completion time is wrong for TQ = 90, 100, 120, 130, 140, 150, 160, 170, 180, 190, 200
+		-Total Process completion time is correct for TQ = 10,20,30,40,110
+		-Also final statement is wrong:
+			O: best 200 698723
+			C: best 110 698723
+	
+	For tracefile H:
+		-all time stamps and time quantums match
+		-same issue as G
+		-Total Process completion time is wrong for TQ = ,140,150,160,170,180,190,200
+		-Total Process completion time is correct for TQ = 130,
+		-Final Statement is wrong:
+			O: best 200 759258
+			C: best 130 759258
+		-requesting data bus at wrong places e.g. in TQ=200 our program requests it at 830 for process 5 when it should do it at 74044
+		
+			
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

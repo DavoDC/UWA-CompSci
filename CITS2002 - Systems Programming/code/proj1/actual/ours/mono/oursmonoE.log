@@ -1,0 +1,50 @@
+
+ #### TRACEFILE RAW #### 
+
+device	disk	80000 bytes/sec
+reboot
+process 5 50 {
+    i/o		220	disk	1500
+    exit        600
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) disk       80000                 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) disk       80000                 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      600    5      0      50    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          disk          270        18750   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019085   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019285   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019385   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 50 19365
+
+best 50 19365

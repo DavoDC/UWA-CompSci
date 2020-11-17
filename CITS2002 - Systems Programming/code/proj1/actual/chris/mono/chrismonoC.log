@@ -1,0 +1,16 @@
+@00000000   reboot with TQ=50                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000065   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000115   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000165   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000215   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+@00000400   p2.NEW->READY                                                         (running=__  RQ=[2]  nexit=1)
+@00000405   p2.READY->RUNNING                                                     (running=p2  RQ=[]  nexit=1)
+@00000455   p2.freshTQ                                                            (running=p2  RQ=[]  nexit=1)
+@00000505   p2.freshTQ                                                            (running=p2  RQ=[]  nexit=1)
+@00000555   p2.freshTQ                                                            (running=p2  RQ=[]  nexit=1)
+@00000605   p2.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=2)
+total_process_completion_time 50 595
+
+best 50 595

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=PM
+comment1.params=
+comment1.target=PM()
+comment2.params=t\ p
+comment2.target=java.util.ArrayList\ naive(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Returns\ all\ instances\ of\ p\ in\ t,\ using\ the\ naive\ algorithm.\r\n
+comment3.params=t\ p
+comment3.target=java.util.ArrayList\ rabinkarp(java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ Returns\ all\ instances\ of\ p\ in\ t,\ using\ Rabin-Karp.\r\n\ Assumes\ both\ strings\ are\ all\ digits\ and\ p\ fits\ into\ int.\r\n
+comment4.params=p
+comment4.target=java.util.ArrayList\ kmpprefix(java.lang.String)
+comment4.text=\r\n\ Returns\ the\ prefix\ function\ for\ Knuth-Morris-Pratt.\r\n
+comment5.params=t\ p
+comment5.target=java.util.ArrayList\ knuthmorrispratt(java.lang.String,\ java.lang.String)
+comment5.text=\r\n\ Returns\ all\ instances\ of\ p\ in\ t,\ using\ Knuth-Morris-Pratt.\r\n
+comment6.params=t\ p
+comment6.target=java.util.ArrayList\ boyermoore(java.lang.String,\ java.lang.String)
+comment6.text=\r\n\ Returns\ all\ instances\ of\ p\ in\ t,\ using\ Boyer-Moore.\r\n\ Assumes\ both\ strings\ are\ all\ digits.\r\n
+comment7.params=
+comment7.target=void\ comparePMs()
+comment7.text=\r\n\ Runs\ the\ pattern-matching\ algorithms.\ Using\ only\ digits\ makes\ \r\n\ things\ easier\ for\ some\ algorithms,\ especially\ Boyer-Moore.\ \r\n
+numComments=8

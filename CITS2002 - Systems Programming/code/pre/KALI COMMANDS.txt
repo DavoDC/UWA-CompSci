@@ -1,0 +1,32 @@
+// Install C
+apt-get update
+apt-get install build-essentials
+apt-get install gcc
+
+// Edit
+nano Hello.c
+
+// Compile 
+mycc Hello hello.c
+
+// Run
+./exe
+
+// Rename
+mv old.c new.c
+
+// Change 
+kali config --default-user root
+kali config --default-user david
+sudo su    // Go into ROOT in place!
+
+// Permissions
+
+// Check
+ls -lha       
+
+// Fix files 
+chmod 600 *
+
+// Fix Exes/Folders
+chmod 700 *  

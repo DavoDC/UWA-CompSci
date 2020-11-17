@@ -1,0 +1,127 @@
+@00000000   reboot with TQ=10                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000025   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000035   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000045   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 10 45
+
+@00000000   reboot with TQ=20                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000035   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 20 45
+
+@00000000   reboot with TQ=30                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000045   p1.freshTQ                                                            (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 30 45
+
+@00000000   reboot with TQ=40                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 40 45
+
+@00000000   reboot with TQ=50                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 50 45
+
+@00000000   reboot with TQ=60                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 60 45
+
+@00000000   reboot with TQ=70                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 70 45
+
+@00000000   reboot with TQ=80                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 80 45
+
+@00000000   reboot with TQ=90                                                     (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 90 45
+
+@00000000   reboot with TQ=100                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 100 45
+
+@00000000   reboot with TQ=110                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 110 45
+
+@00000000   reboot with TQ=120                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 120 45
+
+@00000000   reboot with TQ=130                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 130 45
+
+@00000000   reboot with TQ=140                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 140 45
+
+@00000000   reboot with TQ=150                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 150 45
+
+@00000000   reboot with TQ=160                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 160 45
+
+@00000000   reboot with TQ=170                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 170 45
+
+@00000000   reboot with TQ=180                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 180 45
+
+@00000000   reboot with TQ=190                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 190 45
+
+@00000000   reboot with TQ=200                                                    (running=__  RQ=[]  nexit=0)
+@00000010   p1.NEW->READY                                                         (running=__  RQ=[1]  nexit=0)
+@00000015   p1.READY->RUNNING                                                     (running=p1  RQ=[]  nexit=0)
+@00000055   p1.RUNNING->EXIT                                                      (running=__  RQ=[]  nexit=1)
+total_process_completion_time 200 45
+
+# reporting the longest time_quantum resulting in the shortest total_process_completion_time
+best 200 45

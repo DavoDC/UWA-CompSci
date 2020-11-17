@@ -1,0 +1,83 @@
+ } else if (sum.bitmap[curChildbID] == SIFS_FILE) {
+            // Else If the child block is a file block
+
+            // Get the file block
+            SIFS_FILEBLOCK fileB = getFileBlock(curChildbID);
+
+            // The new and old blockIDs of the fileblock
+            int newFBpos = 0;
+            // int oldFBpos = curChildbID;
+
+            // If the next unused block is less than the current block
+            if (nextUbID < curChildbID) {
+
+                // The block should be moved (leftward) to the unused ID
+
+                // Update the child entry of the parent to its new block ID
+                parDir.entries[e].blockID = nextUbID;
+
+                // Write the updated parent directory to volume
+                seekToBID(parbID);
+                fwrite(&parDir, sizeof parDir, 1, sum.volfile);
+
+                // Shift the actual block and update the bitmap
+                shiftAndUpdateBM(nextUbID, curChildbID);
+
+                // Save location of fileblock
+                newFBpos = nextUbID;
+            }
+
+            // Get a contiguous block
+            int largeCB = sum.bsize * getBlocksReq(fileB.length);
+            SIFS_BLOCKID start;
+            SIFS_BLOCKID end;
+
+            if (getContigSeries(largeCB, &start, &end) == SIFS_SUCCESS) {
+
+                // Get the range of data blocks of the file block
+                //int startDB = fileB.firstblockID;
+                int endDB = fileB.firstblockID + getBlocksReq(fileB.length);
+
+                // For all blocks
+                int newIndex = start;
+                for (int b = fileB.firstblockID; b <= endDB; b++) {
+                    shiftAndUpdateBM(newIndex, b);
+                    newIndex++;
+
+                }
+
+                // Update the first block ID of the fileblock
+                //  Change the block ID
+                fileB.firstblockID = start;
+                //  Seek to the fileblock
+                seekToBID(newFBpos);
+                fwrite(&fileB, sizeof fileB, 1, sum.volfile);
+               
+
+
+                //                // For all blocks
+                //                for (int curFbID = 0; curFbID < sum.bnum; curFbID++) {
+                //
+                //                    // If it is a file block
+                //                    if (sum.bitmap[curFbID] == SIFS_FILE) {
+                //
+                //                        // Get the file block
+                //                        SIFS_FILEBLOCK curFB = getFileBlock(curFbID);
+                //
+                //                        // If the moved fileblock MD5 matches
+                //                        // the current MD5
+                //                        if (memcmp(fileB.md5, curFB.md5, MD5_BYTELEN) == 0) {
+                //
+                //                            // Change the block ID of the current FB
+                //                            curFB.firstblockID = start;
+                //
+                //                            // Seek to the current FB
+                //                            seekToBID(curFbID);
+                //
+                //                            // Write the current FB 
+                //                            fwrite(&curFB, sizeof curFB, 1, sum.volfile);
+                //                        }
+                //                    }
+                //                }
+
+            }

@@ -1,0 +1,98 @@
+
+ #### TRACEFILE RAW #### 
+
+device	floppy	30000 bytes/sec
+reboot
+process 5 50 {
+	i/o	220	floppy	2100
+	i/o	220	floppy	1600
+	i/o	220	floppy	2100
+	i/o	220	floppy	1600
+	i/o	220	floppy	2100
+	i/o	220	floppy	1600
+	i/o	220	floppy	2210
+	i/o	220	floppy	1600
+	exit	1600
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     30000                 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     30000                 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      8      1600   5      0      50    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        270        70000   
+   (Ev 1)    0          floppy        270        53334   
+   (Ev 2)    0          floppy        270        70000   
+   (Ev 3)    0          floppy        270        53334   
+   (Ev 4)    0          floppy        270        70000   
+   (Ev 5)    0          floppy        270        53334   
+   (Ev 6)    0          floppy        270        73667   
+   (Ev 7)    0          floppy        270        53334   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|
+@00070280   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00070285   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00123624   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00123629   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00193634   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00193639   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00246978   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00246983   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00316988   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00316993   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00370332   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00370337   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00444009   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00444014   p5.READY->RUNNING (frTQ), p5.RUNNING->BLOCKED(floppy)            Ne: Re: Ru: Ex: Bl:5|
+@00497353   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:
+@00497358   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00497408   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497508   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497558   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497608   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497658   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497708   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497758   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497808   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497858   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497908   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00497958   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498008   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498058   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498108   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498158   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498208   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498258   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498358   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498408   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498508   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498558   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498608   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498658   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498708   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00498738   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 50 498688
+
+best 50 498688

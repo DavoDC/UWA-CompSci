@@ -1,0 +1,172 @@
+
+ #### TRACEFILE RAW #### 
+
+device floppy 30000 bytes/sec
+device disk 80000 bytes/sec
+reboot
+
+
+process 1 10 {	
+    i/o  250  floppy 2200
+    i/o  250  disk   4600	
+    exit        500
+}
+process 2 220 {
+	i/o 100 disk 1000
+    exit        500
+}
+process 3 330 {
+	i/o 230 floppy 1600
+    exit        500
+}
+process 4 440 {
+	i/o 333 disk 3000
+	i/o 430 disk 1300
+    exit        500
+}
+process 5 550 {
+	i/o 220 floppy 2100
+    exit        300
+}
+process 6 660 {
+    exit        300
+}
+process 7 770 {
+    exit        300
+}
+process 8 880 {
+    exit        300
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     30000                 
+  (Dev 1) disk       80000                 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) disk       80000                 
+  (Dev 1) floppy     30000                 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      2      500    1      0      10    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        260        73334   
+   (Ev 1)    0          disk          260        57500   
+
+  (Proc 1)  0      0      0      0      260    1      1      500    2      0      220   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          disk          320        12500   
+
+  (Proc 2)  0      0      0      0      320    2      1      500    3      0      330   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        560        53334   
+
+  (Proc 3)  0      0      0      0      560    3      2      500    4      0      440   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          disk          773        37500   
+   (Ev 1)    0          disk          870        16250   
+
+  (Proc 4)  0      0      0      0      870    4      1      300    5      0      550   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        770        70000   
+
+  (Proc 5)  0      0      0      0      770    5      0      300    6      0      660   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 6)  0      0      0      0      770    6      0      300    7      0      770   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 7)  0      0      0      0      770    7      0      300    8      0      880   
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:1|2|3|4|5|6|7|8| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2|3|4|5|6|7|8| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000220   p2.NEW->READY,                                                   Ne:3|4|5|6|7|8| Re:2| Ru:1| Ex: Bl:
+@00000265   p1.RUNNING->BLOCKED(floppy)                                      Ne:3|4|5|6|7|8| Re:2| Ru: Ex: Bl:1|
+@00000270   p2.READY->RUNNING (frTQ),                                        Ne:3|4|5|6|7|8| Re: Ru:2| Ex: Bl:1|
+@00000330   p3.NEW->READY,                                                   Ne:4|5|6|7|8| Re:3| Ru:2| Ex: Bl:1|
+@00000370   p2.RUNNING->BLOCKED(disk)                                        Ne:4|5|6|7|8| Re:3| Ru: Ex: Bl:1|2|
+@00000375   p3.READY->RUNNING (frTQ),                                        Ne:4|5|6|7|8| Re: Ru:3| Ex: Bl:1|2|
+@00000440   p4.NEW->READY,                                                   Ne:5|6|7|8| Re:4| Ru:3| Ex: Bl:1|2|
+@00000475   p3.expire,  p3.RUNNING->READY                                    Ne:5|6|7|8| Re:4|3| Ru: Ex: Bl:1|2|
+@00000480   p4.READY->RUNNING (frTQ),                                        Ne:5|6|7|8| Re:3| Ru:4| Ex: Bl:1|2|
+@00000550   p5.NEW->READY,                                                   Ne:6|7|8| Re:3|5| Ru:4| Ex: Bl:1|2|
+@00000580   p4.expire,  p4.RUNNING->READY                                    Ne:6|7|8| Re:3|5|4| Ru: Ex: Bl:1|2|
+@00000585   p3.READY->RUNNING (frTQ),                                        Ne:6|7|8| Re:5|4| Ru:3| Ex: Bl:1|2|
+@00000660   p6.NEW->READY,                                                   Ne:7|8| Re:5|4|6| Ru:3| Ex: Bl:1|2|
+@00000685   p3.expire,  p3.RUNNING->READY                                    Ne:7|8| Re:5|4|6|3| Ru: Ex: Bl:1|2|
+@00000690   p5.READY->RUNNING (frTQ),                                        Ne:7|8| Re:4|6|3| Ru:5| Ex: Bl:1|2|
+@00000770   p7.NEW->READY,                                                   Ne:8| Re:4|6|3|7| Ru:5| Ex: Bl:1|2|
+@00000790   p5.expire,  p5.RUNNING->READY                                    Ne:8| Re:4|6|3|7|5| Ru: Ex: Bl:1|2|
+@00000795   p4.READY->RUNNING (frTQ),                                        Ne:8| Re:6|3|7|5| Ru:4| Ex: Bl:1|2|
+@00000880   p8.NEW->READY,                                                   Ne: Re:6|3|7|5|8| Ru:4| Ex: Bl:1|2|
+@00000895   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|7|5|8|4| Ru: Ex: Bl:1|2|
+@00000900   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|7|5|8|4| Ru:6| Ex: Bl:1|2|
+@00001000   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|7|5|8|4|6| Ru: Ex: Bl:1|2|
+@00001005   p3.READY->RUNNING (frTQ),                                        Ne: Re:7|5|8|4|6| Ru:3| Ex: Bl:1|2|
+@00001035   p3.RUNNING->BLOCKED(floppy)                                      Ne: Re:7|5|8|4|6| Ru: Ex: Bl:1|3|2|
+@00001040   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|8|4|6| Ru:7| Ex: Bl:1|3|2|
+@00001140   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|8|4|6|7| Ru: Ex: Bl:1|3|2|
+@00001145   p5.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|7| Ru:5| Ex: Bl:1|3|2|
+@00001245   p5.expire,  p5.RUNNING->READY                                    Ne: Re:8|4|6|7|5| Ru: Ex: Bl:1|3|2|
+@00001250   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|7|5| Ru:8| Ex: Bl:1|3|2|
+@00001350   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|7|5|8| Ru: Ex: Bl:1|3|2|
+@00001355   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|7|5|8| Ru:4| Ex: Bl:1|3|2|
+@00001455   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|7|5|8|4| Ru: Ex: Bl:1|3|2|
+@00001460   p6.READY->RUNNING (frTQ),                                        Ne: Re:7|5|8|4| Ru:6| Ex: Bl:1|3|2|
+@00001560   p6.expire,  p6.RUNNING->READY                                    Ne: Re:7|5|8|4|6| Ru: Ex: Bl:1|3|2|
+@00001565   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|8|4|6| Ru:7| Ex: Bl:1|3|2|
+@00001665   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|8|4|6|7| Ru: Ex: Bl:1|3|2|
+@00001670   p5.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|7| Ru:5| Ex: Bl:1|3|2|
+@00001690   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re:8|4|6|7| Ru: Ex: Bl:1|3|5|2|
+@00001695   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|7| Ru:8| Ex: Bl:1|3|5|2|
+@00001795   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|7|8| Ru: Ex: Bl:1|3|5|2|
+@00001800   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|7|8| Ru:4| Ex: Bl:1|3|5|2|
+@00001833   p4.RUNNING->BLOCKED(disk)                                        Ne: Re:6|7|8| Ru: Ex: Bl:1|3|5|2|4|
+@00001838   p6.READY->RUNNING (frTQ),                                        Ne: Re:7|8| Ru:6| Ex: Bl:1|3|5|2|4|
+@00001938   p6.RUNNING->EXIT                                                 Ne: Re:7|8| Ru: Ex:6| Bl:1|3|5|2|4|
+@00001943   p7.READY->RUNNING (frTQ),                                        Ne: Re:8| Ru:7| Ex:6| Bl:1|3|5|2|4|
+@00002043   p7.RUNNING->EXIT                                                 Ne: Re:8| Ru: Ex:6|7| Bl:1|3|5|2|4|
+@00002048   p8.READY->RUNNING (frTQ),                                        Ne: Re: Ru:8| Ex:6|7| Bl:1|3|5|2|4|
+@00002148   p8.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8| Bl:1|3|5|2|4|
+@00012875   p2.BLOCKED(disk)->READY                                          Ne: Re:2| Ru: Ex:6|7|8| Bl:1|3|5|4|
+@00012880   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex:6|7|8| Bl:1|3|5|4|
+@00012980   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:6|7|8| Bl:1|3|5|4|
+@00013080   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:6|7|8| Bl:1|3|5|4|
+@00013180   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex:6|7|8| Bl:1|3|5|4|
+@00013280   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8|2| Bl:1|3|5|4|
+@00050380   p4.BLOCKED(disk)->READY                                          Ne: Re:4| Ru: Ex:6|7|8|2| Bl:1|3|5|
+@00050385   p4.READY->RUNNING (frTQ),                                        Ne: Re: Ru:4| Ex:6|7|8|2| Bl:1|3|5|
+@00050482   p4.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex:6|7|8|2| Bl:1|3|5|4|
+@00066737   p4.BLOCKED(disk)->READY                                          Ne: Re:4| Ru: Ex:6|7|8|2| Bl:1|3|5|
+@00066742   p4.READY->RUNNING (frTQ),                                        Ne: Re: Ru:4| Ex:6|7|8|2| Bl:1|3|5|
+@00066812   p4.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8|2|4| Bl:1|3|5|
+@00139869   p1.BLOCKED(floppy)->READY                                        Ne: Re:1| Ru: Ex:6|7|8|2|4| Bl:3|5|
+@00139874   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(disk)              Ne: Re: Ru: Ex:6|7|8|2|4| Bl:3|5|1|
+@00197379   p1.BLOCKED(disk)->READY                                          Ne: Re:1| Ru: Ex:6|7|8|2|4| Bl:3|5|
+@00197384   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex:6|7|8|2|4| Bl:3|5|
+@00197484   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:6|7|8|2|4| Bl:3|5|
+@00197584   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex:6|7|8|2|4| Bl:3|5|
+@00197634   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8|2|4|1| Bl:3|5|
+@00250713   p3.BLOCKED(floppy)->READY                                        Ne: Re:3| Ru: Ex:6|7|8|2|4|1| Bl:5|
+@00250718   p3.READY->RUNNING (frTQ),                                        Ne: Re: Ru:3| Ex:6|7|8|2|4|1| Bl:5|
+@00250818   p3.freshTQ (ign'd)                                               Ne: Re: Ru:3| Ex:6|7|8|2|4|1| Bl:5|
+@00250918   p3.freshTQ (ign'd)                                               Ne: Re: Ru:3| Ex:6|7|8|2|4|1| Bl:5|
+@00250988   p3.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8|2|4|1|3| Bl:5|
+@00320718   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:6|7|8|2|4|1|3| Bl:
+@00320723   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:6|7|8|2|4|1|3| Bl:
+@00320803   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:6|7|8|2|4|1|3|5| Bl:
+total_process_completion_time 100 320793
+
+best 100 320793

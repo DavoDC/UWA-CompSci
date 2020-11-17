@@ -1,0 +1,1829 @@
+
+ #### TRACEFILE RAW #### 
+
+
+device    usb      1000000 bytes/sec
+reboot
+
+process 1 0 {
+    i/o     0   usb 100
+    exit        50
+}
+
+
+process 21 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+process 22 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+
+
+process 31 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 32 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 33 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) usb        1000000               
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) usb        1000000               
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      50     1      0      0     
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           0          100     
+
+  (Proc 1)  0      0      0      0      0      1      1      100    21     0      55    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           65         100     
+
+  (Proc 2)  0      0      0      0      65     2      1      100    22     0      55    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           65         100     
+
+  (Proc 3)  0      0      0      0      65     3      1      100    31     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+  (Proc 4)  0      0      0      0      70     4      1      100    32     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+  (Proc 5)  0      0      0      0      70     5      1      100    33     0      60    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          usb           70         100     
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+@00000145   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+@00000230   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T235 P22 is accessing usb
+@00000240   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000250   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000260   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000270   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000280   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000290   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000300   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000335   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000345   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000355   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000365   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000375   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000385   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000395   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000405   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000440   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000450   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000460   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000470   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000480   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000490   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000500   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000510   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000545   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000555   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000565   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000575   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000585   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000595   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000605   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000615   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000650   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000660   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000670   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000680   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000690   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000700   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000710   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000720   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 10 730
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+@00000155   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000240   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000260   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000280   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000300   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000345   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000365   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000385   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000405   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000450   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000470   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000490   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000510   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000555   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000575   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000595   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000615   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000660   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000680   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000700   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000720   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 20 730
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+@00000165   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000250   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000280   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000355   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000385   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000460   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000490   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000565   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000595   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000670   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000700   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 30 730
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+@00000175   p1.freshTQ (ign'd)                                               Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000260   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000300   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000365   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000405   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000470   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000510   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000575   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000615   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000680   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000720   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 40 730
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000270   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000375   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000480   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000585   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000690   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 50 730
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000280   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000385   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000490   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000595   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000700   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 60 730
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000290   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000395   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000500   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000605   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000710   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 70 730
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000300   p21.freshTQ (ign'd)                                              Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000405   p22.freshTQ (ign'd)                                              Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000510   p31.freshTQ (ign'd)                                              Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000615   p32.freshTQ (ign'd)                                              Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000720   p33.freshTQ (ign'd)                                              Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 80 730
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,  p1.NEW->READY,                               Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 90 730
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 100 730
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 110 730
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 120 730
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 130 730
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 140 730
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 150 730
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 160 730
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 170 730
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 180 730
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 190 730
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,  p1.NEW->READY,                              Ne:21|22|31|32|33| Re:1| Ru: Ex: Bl:
+ T5 P1 is accessing usb
+@00000005   p1.READY->RUNNING (frTQ), p1.RUNNING->BLOCKED(usb)               Ne:21|22|31|32|33| Re: Ru: Ex: Bl:1|
+ T10 P1 is accessing usb
+ T15 P1 is accessing usb
+ T20 P1 is accessing usb
+ T25 P1 is accessing usb
+ T30 P1 is accessing usb
+ T35 P1 is accessing usb
+ T40 P1 is accessing usb
+ T45 P1 is accessing usb
+ T50 P1 is accessing usb
+ T55 P1 is accessing usb
+@00000055   p21.NEW->READY, p22.NEW->READY,                                  Ne:31|32|33| Re:21|22| Ru: Ex: Bl:1|
+ T60 P1 is accessing usb
+@00000060   p21.READY->RUNNING (frTQ), p31.NEW->READY, p32.NEW->READY, p33.NEW->READY,  Ne: Re:22|31|32|33| Ru:21| Ex: Bl:1|
+ T65 P1 is accessing usb
+ T70 P1 is accessing usb
+@00000070   p21.RUNNING->BLOCKED(usb)                                        Ne: Re:22|31|32|33| Ru: Ex: Bl:1|21|
+ T75 P1 is accessing usb
+@00000075   p22.READY->RUNNING (frTQ),                                       Ne: Re:31|32|33| Ru:22| Ex: Bl:1|21|
+ T80 P1 is accessing usb
+ T85 P1 is accessing usb
+@00000085   p22.RUNNING->BLOCKED(usb)                                        Ne: Re:31|32|33| Ru: Ex: Bl:1|21|22|
+ T90 P1 is accessing usb
+@00000090   p31.READY->RUNNING (frTQ),                                       Ne: Re:32|33| Ru:31| Ex: Bl:1|21|22|
+ T95 P1 is accessing usb
+ T100 P1 is accessing usb
+@00000100   p31.RUNNING->BLOCKED(usb)                                        Ne: Re:32|33| Ru: Ex: Bl:1|21|22|31|
+ T105 P1 is accessing usb
+@00000105   p32.READY->RUNNING (frTQ),                                       Ne: Re:33| Ru:32| Ex: Bl:1|21|22|31|
+ T110 P21 is accessing usb
+@00000110   p1.BLOCKED(usb)->READY                                           Ne: Re:33|1| Ru:32| Ex: Bl:21|22|31|
+ T115 P21 is accessing usb
+@00000115   p32.RUNNING->BLOCKED(usb)                                        Ne: Re:33|1| Ru: Ex: Bl:21|22|31|32|
+ T120 P21 is accessing usb
+@00000120   p33.READY->RUNNING (frTQ),                                       Ne: Re:1| Ru:33| Ex: Bl:21|22|31|32|
+ T125 P21 is accessing usb
+ T130 P21 is accessing usb
+@00000130   p33.RUNNING->BLOCKED(usb)                                        Ne: Re:1| Ru: Ex: Bl:21|22|31|32|33|
+ T135 P21 is accessing usb
+@00000135   p1.READY->RUNNING (frTQ),                                        Ne: Re: Ru:1| Ex: Bl:21|22|31|32|33|
+ T140 P21 is accessing usb
+ T145 P21 is accessing usb
+ T150 P21 is accessing usb
+ T155 P21 is accessing usb
+ T160 P21 is accessing usb
+ T165 P21 is accessing usb
+ T170 P21 is accessing usb
+ T175 P21 is accessing usb
+ T180 P21 is accessing usb
+ T185 P21 is accessing usb
+@00000185   p1.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1| Bl:21|22|31|32|33|
+ T190 P21 is accessing usb
+ T195 P21 is accessing usb
+ T200 P21 is accessing usb
+ T205 P21 is accessing usb
+ T210 P21 is accessing usb
+ T215 P22 is accessing usb
+@00000215   p21.BLOCKED(usb)->READY                                          Ne: Re:21| Ru: Ex:1| Bl:22|31|32|33|
+ T220 P22 is accessing usb
+@00000220   p21.READY->RUNNING (frTQ),                                       Ne: Re: Ru:21| Ex:1| Bl:22|31|32|33|
+ T225 P22 is accessing usb
+ T230 P22 is accessing usb
+ T235 P22 is accessing usb
+@00000310   p21.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21| Bl:22|31|32|33|
+@00000320   p22.BLOCKED(usb)->READY                                          Ne: Re:22| Ru: Ex:1|21| Bl:31|32|33|
+@00000325   p22.READY->RUNNING (frTQ),                                       Ne: Re: Ru:22| Ex:1|21| Bl:31|32|33|
+@00000415   p22.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22| Bl:31|32|33|
+@00000425   p31.BLOCKED(usb)->READY                                          Ne: Re:31| Ru: Ex:1|21|22| Bl:32|33|
+@00000430   p31.READY->RUNNING (frTQ),                                       Ne: Re: Ru:31| Ex:1|21|22| Bl:32|33|
+@00000520   p31.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31| Bl:32|33|
+@00000530   p32.BLOCKED(usb)->READY                                          Ne: Re:32| Ru: Ex:1|21|22|31| Bl:33|
+@00000535   p32.READY->RUNNING (frTQ),                                       Ne: Re: Ru:32| Ex:1|21|22|31| Bl:33|
+@00000625   p32.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32| Bl:33|
+@00000635   p33.BLOCKED(usb)->READY                                          Ne: Re:33| Ru: Ex:1|21|22|31|32| Bl:
+@00000640   p33.READY->RUNNING (frTQ),                                       Ne: Re: Ru:33| Ex:1|21|22|31|32| Bl:
+@00000730   p33.RUNNING->EXIT                                                Ne: Re: Ru: Ex:1|21|22|31|32|33| Bl:
+total_process_completion_time 200 730
+
+best 200 730

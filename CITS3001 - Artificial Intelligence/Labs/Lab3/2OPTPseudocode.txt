@@ -1,0 +1,37 @@
+public static int[] tsp2opt(int[] cs, double[][] table)
+{
+	while improvements can still occur
+	{
+        define tourcopy
+
+		For every city x
+ 		{
+			for every city y (i.e. every pair of cities)
+			{
+	         	define newtour 
+				
+				// new tour becomes copy of old tour WITH 2-opt change
+				define new tour
+
+                // do 2 opt:
+                add old tour to new tour up to lower (loop)
+
+                add cities inverted between lower and upper (loop)
+
+                add remaining cities to new tour (loop)
+
+
+                if its better than tour copy {
+						update tour copy with this new tour
+				}
+			}
+		}
+
+		if tour didnt/cannot be improved
+			stop processing
+		else (if it was improved)
+	        update cs with tourcopy
+		
+	}
+}
+

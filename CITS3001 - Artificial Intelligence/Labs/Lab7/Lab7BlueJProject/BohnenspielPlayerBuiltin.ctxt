@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=BohnenspielPlayerBuiltin
+comment0.text=\r\n\ Implements\ a\ built-in\ player\ for\ Bohnenspiel.\ Move-choice\ is\ determined\ by\r\n\ the\ field\ strategy.\r\n
+comment1.params=s\ f
+comment1.target=BohnenspielPlayerBuiltin(BuiltinStrategy,\ Farbe)
+comment1.text=\r\n\ Constructs\ a\ Bohnenspiel\ player.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment2.text=\r\n\ Returns\ the\ player's\ name.\r\n
+comment3.params=
+comment3.target=Farbe\ getFarbe()
+comment3.text=\r\n\ Returns\ the\ player's\ colour.\r\n
+comment4.params=game
+comment4.target=int\ chooseMove(Bohnenspiel)
+comment4.text=\r\n\ Returns\ a\ legal\ move\ in\ game,\ i.e.\ a\ number\ h\ in\ [1,\ 6].\ h\ must\ denote\ a\r\n\ non-empty\ house\ on\ this\ player's\ side\ of\ the\ board.\ You\ can\ assume\ that\r\n\ at\ least\ one\ legal\ move\ is\ available.\ DO\ NOT\ RETURN\ AN\ ILLEGAL\ MOVE\ -\r\n\ that's\ an\ automatic\ loss.\r\n
+numComments=5

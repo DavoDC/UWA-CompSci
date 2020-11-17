@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f2" displayName="comm" projectFiles="true">
+        <itemPath>BrowserHandler.cpp</itemPath>
+        <itemPath>BrowserHandler.h</itemPath>
+        <itemPath>DatagramHandler.cpp</itemPath>
+        <itemPath>DatagramHandler.h</itemPath>
+        <itemPath>RGProc.cpp</itemPath>
+        <itemPath>RGProc.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="main" projectFiles="true">
+        <itemPath>globals.cpp</itemPath>
+        <itemPath>globals.h</itemPath>
+        <itemPath>station.cpp</itemPath>
+        <itemPath>stringfix.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="statgram" projectFiles="true">
+        <logicalFolder name="f1" displayName="log" projectFiles="true">
+          <itemPath>ConnLog.cpp</itemPath>
+          <itemPath>ConnLog.h</itemPath>
+          <itemPath>RouteLog.cpp</itemPath>
+          <itemPath>RouteLog.h</itemPath>
+          <itemPath>RouteStop.cpp</itemPath>
+          <itemPath>RouteStop.h</itemPath>
+        </logicalFolder>
+        <itemPath>StatGram.cpp</itemPath>
+        <itemPath>StatGram.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="timetable" projectFiles="true">
+        <itemPath>Connection.cpp</itemPath>
+        <itemPath>Connection.h</itemPath>
+        <itemPath>LocalTime.cpp</itemPath>
+        <itemPath>LocalTime.h</itemPath>
+        <itemPath>Timetable.cpp</itemPath>
+        <itemPath>Timetable.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/station</output>
+        </linkerTool>
+      </compileType>
+      <item path="BrowserHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BrowserHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConnLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DatagramHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DatagramHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LocalTime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LocalTime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RGProc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RGProc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RouteLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RouteLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RouteStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RouteStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StatGram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StatGram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Timetable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Timetable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="globals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="globals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="station.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="stringfix.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="BrowserHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BrowserHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConnLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DatagramHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DatagramHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LocalTime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LocalTime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RGProc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RGProc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RouteLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RouteLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RouteStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RouteStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StatGram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StatGram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Timetable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Timetable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="globals.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="globals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="station.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="stringfix.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

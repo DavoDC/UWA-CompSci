@@ -1,0 +1,1609 @@
+
+ #### TRACEFILE RAW #### 
+
+device	floppy	30000 bytes/sec
+reboot
+process 2 240 {
+	i/o	250	floppy	2200
+	i/o	280	floppy	4600
+	i/o	320	floppy	3440
+	i/o	600	floppy	1600
+	exit	1100
+}
+process 5 280 {
+	i/o	320	floppy	1100
+	i/o	410	floppy	4600
+	i/o	580	floppy	3610
+	i/o	720	floppy	1600
+	exit	1200
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     30000                 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) floppy     30000                 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      4      1100   2      0      240   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        490        73334   
+   (Ev 1)    0          floppy        520        153334  
+   (Ev 2)    0          floppy        560        114667  
+   (Ev 3)    0          floppy        840        53334   
+
+  (Proc 1)  0      0      0      0      840    1      4      1200   5      0      280   
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          floppy        600        36667   
+   (Ev 1)    0          floppy        690        153334  
+   (Ev 2)    0          floppy        860        120334  
+   (Ev 3)    0          floppy        1000       53334   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000255   p2.freshTQ (ign'd)                                               Ne:5| Re: Ru:2| Ex: Bl:
+@00000265   p2.freshTQ (ign'd)                                               Ne:5| Re: Ru:2| Ex: Bl:
+@00000275   p2.freshTQ (ign'd)                                               Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000285   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000290   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000300   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000305   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000315   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000320   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000330   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000335   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000345   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000350   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000360   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000365   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000375   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000380   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000390   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000395   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000405   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000410   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000420   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000425   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000435   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000440   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000450   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000455   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000465   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000470   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000480   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000485   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000495   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000500   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000510   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000515   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000525   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000530   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000540   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000545   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000555   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000560   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000570   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000575   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000585   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000590   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000600   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000605   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000615   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000620   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000630   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000635   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000645   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000650   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000660   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000665   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000675   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000680   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000690   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000695   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000705   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000710   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000720   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000725   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000750   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000755   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000765   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000770   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000780   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000785   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000795   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000800   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000810   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000815   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000825   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000830   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000840   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000845   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000855   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000860   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000870   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000875   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000885   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000890   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000900   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000905   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000915   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000920   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000930   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000940   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000950   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000960   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000970   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000980   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000990   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00001000   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00001010   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00001020   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00001030   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074254   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074259   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074269   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00074279   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00074289   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110926   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110931   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110941   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110951   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110961   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110971   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110981   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110991   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00111001   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00111011   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00111021   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264265   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264270   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264280   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00264290   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00264300   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00264310   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417604   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417609   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417619   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417629   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417639   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417649   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417659   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417669   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417679   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417689   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417699   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417709   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417719   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417729   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417739   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417749   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417759   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417769   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417779   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532276   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532281   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532291   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532301   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532311   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532331   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532341   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532351   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532361   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532371   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532391   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532401   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532411   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532421   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532431   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532441   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532451   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532461   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532471   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532481   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532491   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532501   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532511   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532521   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532531   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532541   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532551   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532561   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652615   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652620   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652630   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652640   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652650   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652660   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652670   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652680   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652690   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652700   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652710   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652720   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652730   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652740   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652750   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652760   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705954   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705959   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705969   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705979   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705989   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706009   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706019   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706029   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706039   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706049   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706069   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706079   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706089   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706099   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706109   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706119   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706129   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706139   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706149   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706159   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706169   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706179   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706189   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706199   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706209   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706219   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706229   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706249   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706259   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706269   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706289   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706299   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706309   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706319   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706329   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706339   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706349   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706359   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706369   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706379   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706389   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706399   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706409   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706419   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706429   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706439   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706449   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706459   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759293   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759298   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759318   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759328   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759348   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759358   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759368   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759378   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759388   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759408   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759418   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759428   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759438   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759448   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759468   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759478   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759488   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759498   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759508   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759518   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759528   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759538   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759548   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759558   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759568   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759578   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759588   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759598   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759608   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759618   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759628   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759638   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759648   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759658   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759668   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759678   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759688   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759698   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759708   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759718   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759728   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759738   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759748   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759758   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759768   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759778   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 10 759538
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000265   p2.freshTQ (ign'd)                                               Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000285   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000290   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000310   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000315   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000335   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000340   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000360   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000365   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000385   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000390   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000410   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000415   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000435   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000440   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000460   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000465   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000485   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000490   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000510   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000515   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000535   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000540   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000560   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000565   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000585   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000590   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000610   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000615   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000635   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000640   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000660   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000665   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000685   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000690   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000710   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000715   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000760   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000765   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000785   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000790   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000810   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000815   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000825   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000830   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000850   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000870   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000890   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000910   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000930   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074164   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074169   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074189   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00074199   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110836   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110841   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110861   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110881   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110901   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110921   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110931   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264175   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264180   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264200   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00264220   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417514   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417519   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417539   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417559   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417579   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417599   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417619   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417639   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417659   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417679   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417689   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532186   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532191   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532211   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532231   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532251   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532271   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532291   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532311   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532331   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532351   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532371   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532391   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532411   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532431   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532451   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532471   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652525   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652530   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652550   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652570   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652590   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652610   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652630   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652650   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652670   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705864   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705869   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705889   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705909   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705929   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705949   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705969   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705989   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706009   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706029   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706049   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706069   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706089   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706109   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706129   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706149   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706169   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706189   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706209   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706229   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706249   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706269   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706289   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706309   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706329   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706349   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706369   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759203   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759208   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759228   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759248   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759268   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759288   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759328   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759348   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759368   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759388   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759408   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759428   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759448   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759468   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759488   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759508   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759528   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759548   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759568   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759588   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759608   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759628   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759648   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759668   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759688   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 20 759448
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000275   p2.freshTQ (ign'd)                                               Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000305   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000310   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000340   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000345   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000375   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000380   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000410   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000415   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000445   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000450   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000480   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000485   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000515   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000520   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000550   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000555   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000585   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000590   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000620   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000625   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000655   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000660   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000690   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000695   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000725   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000730   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000760   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000765   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000775   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000780   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000810   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000870   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000890   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074114   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074119   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074149   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110786   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110791   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110821   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110851   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110881   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264125   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264130   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264160   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00264170   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417464   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417469   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417499   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417529   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417559   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417589   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417619   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417639   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532136   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532141   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532171   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532201   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532231   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532261   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532291   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532351   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532411   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532421   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652475   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652480   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652510   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652570   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652600   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652620   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705814   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705819   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705849   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705879   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705909   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705939   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705969   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706029   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706089   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706119   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706149   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706179   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706209   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706269   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706299   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706319   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759153   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759158   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759188   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759218   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759248   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759278   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759368   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759428   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759488   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759518   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759548   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759578   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759608   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759638   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 30 759398
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000285   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000290   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000330   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000335   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000375   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000380   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000420   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000425   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000465   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000470   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000510   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000515   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000555   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000560   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000600   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000605   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000645   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000650   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000690   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000695   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000780   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000785   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000795   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000800   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000880   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074134   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074139   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074169   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110806   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110811   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110851   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110891   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110901   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264145   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264150   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264190   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417484   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417489   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417529   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417569   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417609   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417649   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417659   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532156   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532161   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532201   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532241   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532281   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532361   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532401   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532441   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652495   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652500   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652580   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652620   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652640   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705834   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705839   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705879   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705919   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705959   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706039   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706079   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706119   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706159   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706199   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706319   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706339   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759173   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759178   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759218   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759258   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759298   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759378   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759418   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759498   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759538   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759578   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759618   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759658   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 40 759418
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000295   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000300   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000350   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000355   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000405   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000410   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000460   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000465   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000515   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000520   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000570   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000575   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000625   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000630   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000680   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000685   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000790   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000860   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074074   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074079   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074109   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110746   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110751   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110801   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110841   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264085   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264090   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264130   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417424   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417429   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417479   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417529   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417579   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417599   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532096   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532101   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532151   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532201   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532251   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532301   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532351   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652435   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652440   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652490   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652580   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705774   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705779   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705829   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705879   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705929   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705979   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706029   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706079   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706129   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706179   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706229   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759113   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759118   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759168   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759218   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759268   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759318   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759368   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759418   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759468   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759518   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759568   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759598   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 50 759358
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000305   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000310   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000370   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000375   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000435   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000440   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000500   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000505   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000565   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000570   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000630   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000635   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000695   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000700   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000760   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000765   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000775   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000780   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000860   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074114   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074119   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074149   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110786   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110791   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110851   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110881   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264125   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264130   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264170   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417464   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417469   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417529   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417589   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417639   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532136   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532141   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532201   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532261   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532421   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652475   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652480   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652600   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652620   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705814   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705819   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705879   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705939   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706119   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706179   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706299   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706319   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759153   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759158   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759218   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759278   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759518   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759578   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759638   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 60 759398
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000315   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000320   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000390   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000395   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000465   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000470   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000540   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000545   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000615   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000620   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000690   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000695   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000810   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000850   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074074   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074079   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074109   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110746   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110751   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110821   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110841   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264085   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264090   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264130   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417424   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417429   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417499   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417569   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417599   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532096   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532101   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532171   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532241   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532311   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652435   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652440   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652510   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652580   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705774   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705779   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705849   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705919   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705989   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706129   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706199   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706269   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759113   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759118   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759188   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759258   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759328   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759468   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759538   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759598   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 70 759358
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000325   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000330   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000410   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000415   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000495   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000500   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000580   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000585   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000665   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000670   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000750   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000755   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000765   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000770   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000850   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074104   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074109   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074139   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110776   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110781   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110861   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00110871   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264115   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264120   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264160   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417454   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417459   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417539   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417619   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417629   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532126   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532131   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532211   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532291   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532371   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532411   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652465   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652470   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652550   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652610   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705804   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705809   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705889   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705969   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706049   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706129   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706209   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706289   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706309   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759143   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759148   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759228   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759388   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759468   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759548   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759628   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 80 759388
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,                                               Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000335   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000340   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000430   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000435   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000525   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000530   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000620   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000625   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000695   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000700   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000790   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074034   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074039   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074069   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110706   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110711   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110801   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264045   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264050   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264090   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417384   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417389   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417479   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417559   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532056   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532061   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532151   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532241   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532331   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532341   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652395   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652400   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652490   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705734   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705739   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705829   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705919   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706009   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706099   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706189   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759073   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759078   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759168   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759258   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759348   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759438   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759528   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759558   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 90 759318
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000345   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000350   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000450   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000455   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000555   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000560   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000660   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000665   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000715   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000720   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000820   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074054   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074059   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074089   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110726   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110731   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110821   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264065   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264070   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264110   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417404   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417409   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417509   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417579   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532076   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532081   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532181   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532281   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532361   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652415   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652420   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652520   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652560   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705754   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705759   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705859   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705959   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706159   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706259   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759093   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759098   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759198   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759298   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759498   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759578   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 100 759338
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000355   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000360   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000470   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000475   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000585   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000590   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000700   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000705   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000735   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000740   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074074   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074079   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074109   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110746   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110751   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110841   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264085   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264090   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264130   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417424   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417429   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417539   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417599   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532096   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532101   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532211   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532381   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652435   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652440   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652550   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652580   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705774   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705779   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705889   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706109   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706219   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759113   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759118   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759228   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759448   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759558   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759598   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 110 759358
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000365   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000370   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000490   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000495   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000615   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000620   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000740   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000745   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000755   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000760   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000840   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074094   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074099   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074129   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110766   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110771   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110861   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264105   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264110   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264150   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417444   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417449   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417569   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417619   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532116   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532121   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532241   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532361   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532401   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652455   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652460   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652580   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652600   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705794   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705799   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705919   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706039   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706159   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706279   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706299   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759133   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759138   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759258   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759378   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759498   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759618   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 120 759378
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000375   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000380   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000510   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000515   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000635   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000640   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000770   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00073974   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00073979   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074009   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110646   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110651   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110741   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00263985   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00263990   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264030   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417324   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417329   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417459   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417499   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00531996   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532001   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532131   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532261   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532281   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652335   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652340   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652470   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00652480   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705674   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705679   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705809   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705939   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706069   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706179   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759013   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759018   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759148   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759278   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759408   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759498   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 130 759258
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000385   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000390   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000530   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000535   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000645   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000650   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000790   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00073984   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00073989   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074019   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110656   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110661   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110751   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00263995   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264000   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264040   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417334   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417339   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417479   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417509   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532006   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532011   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532151   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532291   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652345   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652350   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652490   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705684   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705689   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705829   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705969   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706109   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706189   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759023   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759028   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759168   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759308   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759448   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759508   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 140 759268
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000395   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000400   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000550   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000555   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000655   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000660   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000810   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00073994   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00073999   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074029   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110666   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110671   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110761   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264005   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264010   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264050   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417344   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417349   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417499   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417519   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532016   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532021   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532171   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532301   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652355   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652360   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652500   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705694   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705699   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705849   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00705999   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706149   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706199   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759033   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759038   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759188   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759338   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759488   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759518   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 150 759278
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000405   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000410   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000570   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000575   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000665   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000670   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074004   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074009   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074039   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110676   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110681   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110771   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264015   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264020   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264060   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417354   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417359   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417519   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:2|
+@00417529   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532026   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532031   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532191   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532311   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652365   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652370   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652510   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705704   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705709   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705869   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706029   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706189   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706209   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759043   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759048   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759208   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759368   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759528   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 160 759288
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000415   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000420   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000590   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000595   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000675   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000680   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074014   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074019   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074049   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110686   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110691   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110781   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264025   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264030   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264070   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417364   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417369   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417539   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532036   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532041   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532211   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532321   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652375   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652380   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652520   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705714   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705719   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705889   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706059   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706219   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759053   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759058   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759228   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759398   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759538   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 170 759298
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000425   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000430   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000610   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000615   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000685   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000690   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074024   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074029   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074059   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110696   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110701   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110791   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264035   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264040   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264080   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417374   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417379   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417549   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532046   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532051   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532231   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532331   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652385   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652390   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652530   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705724   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705729   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705909   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706089   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706229   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759063   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759068   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759248   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759428   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759548   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 180 759308
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000435   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000440   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000630   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000635   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000695   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000700   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074034   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074039   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074069   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110706   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110711   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110801   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264045   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264050   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264090   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417384   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417389   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417559   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532056   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532061   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532251   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532341   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652395   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652400   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652540   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705734   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705739   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705929   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706119   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706239   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759073   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759078   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759268   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759458   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759558   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 190 759318
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,                                              Ne:2|5| Re: Ru: Ex: Bl:
+@00000240   p2.NEW->READY,                                                   Ne:5| Re:2| Ru: Ex: Bl:
+@00000245   p2.READY->RUNNING (frTQ),                                        Ne:5| Re: Ru:2| Ex: Bl:
+@00000280   p5.NEW->READY,                                                   Ne: Re:5| Ru:2| Ex: Bl:
+@00000445   p2.expire,  p2.RUNNING->READY                                    Ne: Re:5|2| Ru: Ex: Bl:
+@00000450   p5.READY->RUNNING (frTQ),                                        Ne: Re:2| Ru:5| Ex: Bl:
+@00000650   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|5| Ru: Ex: Bl:
+@00000655   p2.READY->RUNNING (frTQ),                                        Ne: Re:5| Ru:2| Ex: Bl:
+@00000705   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re:5| Ru: Ex: Bl:2|
+@00000710   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00000830   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00074044   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00074049   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00074079   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00110716   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00110721   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00110811   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00264055   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00264060   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00264100   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00417394   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00417399   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00417569   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00532066   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00532071   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00532271   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00532351   p2.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:5|2|
+@00652405   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex: Bl:2|
+@00652410   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:2|
+@00652550   p5.RUNNING->BLOCKED(floppy)                                      Ne: Re: Ru: Ex: Bl:2|5|
+@00705744   p2.BLOCKED(floppy)->READY                                        Ne: Re:2| Ru: Ex: Bl:5|
+@00705749   p2.READY->RUNNING (frTQ),                                        Ne: Re: Ru:2| Ex: Bl:5|
+@00705949   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706149   p2.freshTQ (ign'd)                                               Ne: Re: Ru:2| Ex: Bl:5|
+@00706249   p2.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2| Bl:5|
+@00759083   p5.BLOCKED(floppy)->READY                                        Ne: Re:5| Ru: Ex:2| Bl:
+@00759088   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex:2| Bl:
+@00759288   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759488   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex:2| Bl:
+@00759568   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:2|5| Bl:
+total_process_completion_time 200 759328
+
+best 130 759258

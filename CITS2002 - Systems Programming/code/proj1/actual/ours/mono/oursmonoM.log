@@ -1,0 +1,202 @@
+
+ #### TRACEFILE RAW #### 
+
+process 1 10 {
+    exit        500
+}
+process 2 220 {
+    exit        500
+}
+process 3 330 {
+    exit        500
+}
+process 4 440 {
+    exit        500
+}
+process 5 550 {
+    exit        300
+}
+process 6 660 {
+    exit        300
+}
+process 7 770 {
+    exit        300
+}
+process 8 880 {
+    exit        300
+}
+
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      0      500    1      0      10    
+  (Ev X)    active      device        start     trans   
+
+  (Proc 1)  0      0      0      0      0      1      0      500    2      0      220   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 2)  0      0      0      0      0      2      0      500    3      0      330   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 3)  0      0      0      0      0      3      0      500    4      0      440   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 4)  0      0      0      0      0      4      0      300    5      0      550   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 5)  0      0      0      0      0      5      0      300    6      0      660   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 6)  0      0      0      0      0      6      0      300    7      0      770   
+  (Ev X)    active      device        start     trans   
+
+  (Proc 7)  0      0      0      0      0      7      0      300    8      0      880   
+  (Ev X)    active      device        start     trans   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:1|2|3|4|5|6|7|8| Re: Ru: Ex: Bl:
+@00000010   p1.NEW->READY,                                                   Ne:2|3|4|5|6|7|8| Re:1| Ru: Ex: Bl:
+@00000015   p1.READY->RUNNING (frTQ),                                        Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000065   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000115   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000165   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000215   p1.freshTQ (ign'd)                                               Ne:2|3|4|5|6|7|8| Re: Ru:1| Ex: Bl:
+@00000220   p2.NEW->READY,                                                   Ne:3|4|5|6|7|8| Re:2| Ru:1| Ex: Bl:
+@00000265   p1.expire,  p1.RUNNING->READY                                    Ne:3|4|5|6|7|8| Re:2|1| Ru: Ex: Bl:
+@00000270   p2.READY->RUNNING (frTQ),                                        Ne:3|4|5|6|7|8| Re:1| Ru:2| Ex: Bl:
+@00000320   p2.expire,  p2.RUNNING->READY                                    Ne:3|4|5|6|7|8| Re:1|2| Ru: Ex: Bl:
+@00000325   p1.READY->RUNNING (frTQ),                                        Ne:3|4|5|6|7|8| Re:2| Ru:1| Ex: Bl:
+@00000330   p3.NEW->READY,                                                   Ne:4|5|6|7|8| Re:2|3| Ru:1| Ex: Bl:
+@00000375   p1.expire,  p1.RUNNING->READY                                    Ne:4|5|6|7|8| Re:2|3|1| Ru: Ex: Bl:
+@00000380   p2.READY->RUNNING (frTQ),                                        Ne:4|5|6|7|8| Re:3|1| Ru:2| Ex: Bl:
+@00000430   p2.expire,  p2.RUNNING->READY                                    Ne:4|5|6|7|8| Re:3|1|2| Ru: Ex: Bl:
+@00000435   p3.READY->RUNNING (frTQ),                                        Ne:4|5|6|7|8| Re:1|2| Ru:3| Ex: Bl:
+@00000440   p4.NEW->READY,                                                   Ne:5|6|7|8| Re:1|2|4| Ru:3| Ex: Bl:
+@00000485   p3.expire,  p3.RUNNING->READY                                    Ne:5|6|7|8| Re:1|2|4|3| Ru: Ex: Bl:
+@00000490   p1.READY->RUNNING (frTQ),                                        Ne:5|6|7|8| Re:2|4|3| Ru:1| Ex: Bl:
+@00000540   p1.expire,  p1.RUNNING->READY                                    Ne:5|6|7|8| Re:2|4|3|1| Ru: Ex: Bl:
+@00000545   p2.READY->RUNNING (frTQ),                                        Ne:5|6|7|8| Re:4|3|1| Ru:2| Ex: Bl:
+@00000550   p5.NEW->READY,                                                   Ne:6|7|8| Re:4|3|1|5| Ru:2| Ex: Bl:
+@00000595   p2.expire,  p2.RUNNING->READY                                    Ne:6|7|8| Re:4|3|1|5|2| Ru: Ex: Bl:
+@00000600   p4.READY->RUNNING (frTQ),                                        Ne:6|7|8| Re:3|1|5|2| Ru:4| Ex: Bl:
+@00000650   p4.expire,  p4.RUNNING->READY                                    Ne:6|7|8| Re:3|1|5|2|4| Ru: Ex: Bl:
+@00000655   p3.READY->RUNNING (frTQ),                                        Ne:6|7|8| Re:1|5|2|4| Ru:3| Ex: Bl:
+@00000660   p6.NEW->READY,                                                   Ne:7|8| Re:1|5|2|4|6| Ru:3| Ex: Bl:
+@00000705   p3.expire,  p3.RUNNING->READY                                    Ne:7|8| Re:1|5|2|4|6|3| Ru: Ex: Bl:
+@00000710   p1.READY->RUNNING (frTQ),                                        Ne:7|8| Re:5|2|4|6|3| Ru:1| Ex: Bl:
+@00000760   p1.expire,  p1.RUNNING->READY                                    Ne:7|8| Re:5|2|4|6|3|1| Ru: Ex: Bl:
+@00000765   p5.READY->RUNNING (frTQ),                                        Ne:7|8| Re:2|4|6|3|1| Ru:5| Ex: Bl:
+@00000770   p7.NEW->READY,                                                   Ne:8| Re:2|4|6|3|1|7| Ru:5| Ex: Bl:
+@00000815   p5.expire,  p5.RUNNING->READY                                    Ne:8| Re:2|4|6|3|1|7|5| Ru: Ex: Bl:
+@00000820   p2.READY->RUNNING (frTQ),                                        Ne:8| Re:4|6|3|1|7|5| Ru:2| Ex: Bl:
+@00000870   p2.expire,  p2.RUNNING->READY                                    Ne:8| Re:4|6|3|1|7|5|2| Ru: Ex: Bl:
+@00000875   p4.READY->RUNNING (frTQ),                                        Ne:8| Re:6|3|1|7|5|2| Ru:4| Ex: Bl:
+@00000880   p8.NEW->READY,                                                   Ne: Re:6|3|1|7|5|2|8| Ru:4| Ex: Bl:
+@00000925   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|1|7|5|2|8|4| Ru: Ex: Bl:
+@00000930   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|1|7|5|2|8|4| Ru:6| Ex: Bl:
+@00000980   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|1|7|5|2|8|4|6| Ru: Ex: Bl:
+@00000985   p3.READY->RUNNING (frTQ),                                        Ne: Re:1|7|5|2|8|4|6| Ru:3| Ex: Bl:
+@00001035   p3.expire,  p3.RUNNING->READY                                    Ne: Re:1|7|5|2|8|4|6|3| Ru: Ex: Bl:
+@00001040   p1.READY->RUNNING (frTQ),                                        Ne: Re:7|5|2|8|4|6|3| Ru:1| Ex: Bl:
+@00001090   p1.expire,  p1.RUNNING->READY                                    Ne: Re:7|5|2|8|4|6|3|1| Ru: Ex: Bl:
+@00001095   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|2|8|4|6|3|1| Ru:7| Ex: Bl:
+@00001145   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|2|8|4|6|3|1|7| Ru: Ex: Bl:
+@00001150   p5.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|6|3|1|7| Ru:5| Ex: Bl:
+@00001200   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|8|4|6|3|1|7|5| Ru: Ex: Bl:
+@00001205   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|3|1|7|5| Ru:2| Ex: Bl:
+@00001255   p2.expire,  p2.RUNNING->READY                                    Ne: Re:8|4|6|3|1|7|5|2| Ru: Ex: Bl:
+@00001260   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|3|1|7|5|2| Ru:8| Ex: Bl:
+@00001310   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|3|1|7|5|2|8| Ru: Ex: Bl:
+@00001315   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|3|1|7|5|2|8| Ru:4| Ex: Bl:
+@00001365   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|1|7|5|2|8|4| Ru: Ex: Bl:
+@00001370   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|1|7|5|2|8|4| Ru:6| Ex: Bl:
+@00001420   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|1|7|5|2|8|4|6| Ru: Ex: Bl:
+@00001425   p3.READY->RUNNING (frTQ),                                        Ne: Re:1|7|5|2|8|4|6| Ru:3| Ex: Bl:
+@00001475   p3.expire,  p3.RUNNING->READY                                    Ne: Re:1|7|5|2|8|4|6|3| Ru: Ex: Bl:
+@00001480   p1.READY->RUNNING (frTQ),                                        Ne: Re:7|5|2|8|4|6|3| Ru:1| Ex: Bl:
+@00001530   p1.RUNNING->EXIT                                                 Ne: Re:7|5|2|8|4|6|3| Ru: Ex:1| Bl:
+@00001535   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|2|8|4|6|3| Ru:7| Ex:1| Bl:
+@00001585   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|2|8|4|6|3|7| Ru: Ex:1| Bl:
+@00001590   p5.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|6|3|7| Ru:5| Ex:1| Bl:
+@00001640   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|8|4|6|3|7|5| Ru: Ex:1| Bl:
+@00001645   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|3|7|5| Ru:2| Ex:1| Bl:
+@00001695   p2.expire,  p2.RUNNING->READY                                    Ne: Re:8|4|6|3|7|5|2| Ru: Ex:1| Bl:
+@00001700   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|3|7|5|2| Ru:8| Ex:1| Bl:
+@00001750   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|3|7|5|2|8| Ru: Ex:1| Bl:
+@00001755   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|3|7|5|2|8| Ru:4| Ex:1| Bl:
+@00001805   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|7|5|2|8|4| Ru: Ex:1| Bl:
+@00001810   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|7|5|2|8|4| Ru:6| Ex:1| Bl:
+@00001860   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|7|5|2|8|4|6| Ru: Ex:1| Bl:
+@00001865   p3.READY->RUNNING (frTQ),                                        Ne: Re:7|5|2|8|4|6| Ru:3| Ex:1| Bl:
+@00001915   p3.expire,  p3.RUNNING->READY                                    Ne: Re:7|5|2|8|4|6|3| Ru: Ex:1| Bl:
+@00001920   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|2|8|4|6|3| Ru:7| Ex:1| Bl:
+@00001970   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|2|8|4|6|3|7| Ru: Ex:1| Bl:
+@00001975   p5.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|6|3|7| Ru:5| Ex:1| Bl:
+@00002025   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|8|4|6|3|7|5| Ru: Ex:1| Bl:
+@00002030   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|3|7|5| Ru:2| Ex:1| Bl:
+@00002080   p2.expire,  p2.RUNNING->READY                                    Ne: Re:8|4|6|3|7|5|2| Ru: Ex:1| Bl:
+@00002085   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|3|7|5|2| Ru:8| Ex:1| Bl:
+@00002135   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|3|7|5|2|8| Ru: Ex:1| Bl:
+@00002140   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|3|7|5|2|8| Ru:4| Ex:1| Bl:
+@00002190   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|7|5|2|8|4| Ru: Ex:1| Bl:
+@00002195   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|7|5|2|8|4| Ru:6| Ex:1| Bl:
+@00002245   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|7|5|2|8|4|6| Ru: Ex:1| Bl:
+@00002250   p3.READY->RUNNING (frTQ),                                        Ne: Re:7|5|2|8|4|6| Ru:3| Ex:1| Bl:
+@00002300   p3.expire,  p3.RUNNING->READY                                    Ne: Re:7|5|2|8|4|6|3| Ru: Ex:1| Bl:
+@00002305   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|2|8|4|6|3| Ru:7| Ex:1| Bl:
+@00002355   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|2|8|4|6|3|7| Ru: Ex:1| Bl:
+@00002360   p5.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|6|3|7| Ru:5| Ex:1| Bl:
+@00002410   p5.expire,  p5.RUNNING->READY                                    Ne: Re:2|8|4|6|3|7|5| Ru: Ex:1| Bl:
+@00002415   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|3|7|5| Ru:2| Ex:1| Bl:
+@00002465   p2.expire,  p2.RUNNING->READY                                    Ne: Re:8|4|6|3|7|5|2| Ru: Ex:1| Bl:
+@00002470   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|3|7|5|2| Ru:8| Ex:1| Bl:
+@00002520   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|3|7|5|2|8| Ru: Ex:1| Bl:
+@00002525   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|3|7|5|2|8| Ru:4| Ex:1| Bl:
+@00002575   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|7|5|2|8|4| Ru: Ex:1| Bl:
+@00002580   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|7|5|2|8|4| Ru:6| Ex:1| Bl:
+@00002630   p6.expire,  p6.RUNNING->READY                                    Ne: Re:3|7|5|2|8|4|6| Ru: Ex:1| Bl:
+@00002635   p3.READY->RUNNING (frTQ),                                        Ne: Re:7|5|2|8|4|6| Ru:3| Ex:1| Bl:
+@00002685   p3.expire,  p3.RUNNING->READY                                    Ne: Re:7|5|2|8|4|6|3| Ru: Ex:1| Bl:
+@00002690   p7.READY->RUNNING (frTQ),                                        Ne: Re:5|2|8|4|6|3| Ru:7| Ex:1| Bl:
+@00002740   p7.expire,  p7.RUNNING->READY                                    Ne: Re:5|2|8|4|6|3|7| Ru: Ex:1| Bl:
+@00002745   p5.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|6|3|7| Ru:5| Ex:1| Bl:
+@00002795   p5.RUNNING->EXIT                                                 Ne: Re:2|8|4|6|3|7| Ru: Ex:1|5| Bl:
+@00002800   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|6|3|7| Ru:2| Ex:1|5| Bl:
+@00002850   p2.expire,  p2.RUNNING->READY                                    Ne: Re:8|4|6|3|7|2| Ru: Ex:1|5| Bl:
+@00002855   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|6|3|7|2| Ru:8| Ex:1|5| Bl:
+@00002905   p8.expire,  p8.RUNNING->READY                                    Ne: Re:4|6|3|7|2|8| Ru: Ex:1|5| Bl:
+@00002910   p4.READY->RUNNING (frTQ),                                        Ne: Re:6|3|7|2|8| Ru:4| Ex:1|5| Bl:
+@00002960   p4.expire,  p4.RUNNING->READY                                    Ne: Re:6|3|7|2|8|4| Ru: Ex:1|5| Bl:
+@00002965   p6.READY->RUNNING (frTQ),                                        Ne: Re:3|7|2|8|4| Ru:6| Ex:1|5| Bl:
+@00003015   p6.RUNNING->EXIT                                                 Ne: Re:3|7|2|8|4| Ru: Ex:1|5|6| Bl:
+@00003020   p3.READY->RUNNING (frTQ),                                        Ne: Re:7|2|8|4| Ru:3| Ex:1|5|6| Bl:
+@00003070   p3.expire,  p3.RUNNING->READY                                    Ne: Re:7|2|8|4|3| Ru: Ex:1|5|6| Bl:
+@00003075   p7.READY->RUNNING (frTQ),                                        Ne: Re:2|8|4|3| Ru:7| Ex:1|5|6| Bl:
+@00003125   p7.RUNNING->EXIT                                                 Ne: Re:2|8|4|3| Ru: Ex:1|5|6|7| Bl:
+@00003130   p2.READY->RUNNING (frTQ),                                        Ne: Re:8|4|3| Ru:2| Ex:1|5|6|7| Bl:
+@00003180   p2.RUNNING->EXIT                                                 Ne: Re:8|4|3| Ru: Ex:1|5|6|7|2| Bl:
+@00003185   p8.READY->RUNNING (frTQ),                                        Ne: Re:4|3| Ru:8| Ex:1|5|6|7|2| Bl:
+@00003235   p8.RUNNING->EXIT                                                 Ne: Re:4|3| Ru: Ex:1|5|6|7|2|8| Bl:
+@00003240   p4.READY->RUNNING (frTQ),                                        Ne: Re:3| Ru:4| Ex:1|5|6|7|2|8| Bl:
+@00003290   p4.expire,  p4.RUNNING->READY                                    Ne: Re:3|4| Ru: Ex:1|5|6|7|2|8| Bl:
+@00003295   p3.READY->RUNNING (frTQ),                                        Ne: Re:4| Ru:3| Ex:1|5|6|7|2|8| Bl:
+@00003345   p3.expire,  p3.RUNNING->READY                                    Ne: Re:4|3| Ru: Ex:1|5|6|7|2|8| Bl:
+@00003350   p4.READY->RUNNING (frTQ),                                        Ne: Re:3| Ru:4| Ex:1|5|6|7|2|8| Bl:
+@00003400   p4.expire,  p4.RUNNING->READY                                    Ne: Re:3|4| Ru: Ex:1|5|6|7|2|8| Bl:
+@00003405   p3.READY->RUNNING (frTQ),                                        Ne: Re:4| Ru:3| Ex:1|5|6|7|2|8| Bl:
+@00003455   p3.RUNNING->EXIT                                                 Ne: Re:4| Ru: Ex:1|5|6|7|2|8|3| Bl:
+@00003460   p4.READY->RUNNING (frTQ),                                        Ne: Re: Ru:4| Ex:1|5|6|7|2|8|3| Bl:
+@00003510   p4.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:1|5|6|7|2|8|3|4| Bl:
+total_process_completion_time 50 3500
+
+best 50 3500

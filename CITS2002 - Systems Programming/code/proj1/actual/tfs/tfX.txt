@@ -1,0 +1,74 @@
+device    usb2       60000000 bytes/sec
+device    ssd        240000000 bytes/sec
+device    hd         80000000 bytes/sec
+device    screen     200000 bytes/sec
+reboot
+
+process  1  200 {
+  i/o      100     hd      1600
+  i/o      110     usb2    1600
+  i/o      180     hd      1000
+  i/o      190     usb2    1000
+  exit     400
+}
+
+process  2  480 {
+  i/o      8000    screen  40
+  exit     8005
+}
+
+# Output comments for a Time Quantum of 100 using the web-interface
+# T: 0 = Reboot with TQ = 100
+# T: 200 = Process 1 is moved from New to Ready and CS starts
+# T: 205 = Process 1 is moved from Ready to Running
+# T: 305 = Process 1 is moved from the Running queue to the Blocked queue(hd) and it requests for the databus
+# T: 310 Process 1 gets the databus
+# T: 330 = Process 1 is released from the databus, it is moved from the Blocked queue(hd) to the Ready queue and CS starts
+# T: 335 = Process 1 is moved from Ready to Running
+# T: 345 = Process 1 is moved from the Running queue to the Blocked queue(usb2) and it requests for the databus
+# T: 377 = Process 1 is released from the databus, it is moved from the Blocked queue(usb2) to the Ready queue and CS starts
+# T: 382 = Process 1 is moved from Ready to Running
+# T: 452 = Process 1 is moved from the Running queue to the Blocked queue(hd) and it requests for the the databus
+# T: 470 = Process 1 is released from the databus, it is moved from the Blocked queue(hd) to the the Ready queue and CS starts
+# T: 475 = Process 1 is moves from Ready to Running
+# T: 480 = Process 2 is moved from New to Ready
+# T: 485 = Process 1 is moved from the Running queue to the Blocked queue(usb2), it requests for the databus and CS starts for Process 2
+# T: 490 = Process 2 is moved from Ready to Running
+# T: 507 = Process 1 is released from the databus, it is moved from the Blocked queue(usb2) to the Ready queue
+# T: 590 = Process 2 is interrupted, it is moved from Running to Ready and CS starts for Process 1
+# T: 595 = Process 1 is moved from Ready to Running
+# T: 695 = Process 1 is interrupted, it is moved from Running to Ready and CS starts for Process 2
+# T: 700 = Process 2 is moved from Ready to Running
+# T: 800 = Process 2 is interrupted, it is moved from Running to Ready and CS starts for Process 1
+# T: 805 = Process 1 is moved from Ready to Running
+# T: 905 = Process 1 is interrupted, it is moved from Running to Ready and CS starts for Process 2
+# T: 910 = Process 2 is moved from Ready to Running
+# T: 1010 = Process 2 is interrupted, it is moved from Running to Ready and CS starts for Process 1 
+# T: 1015 = Process 1 is moved from Ready to Running
+# T: 1025 = Process 1 ends, it moves from Running to Exit and CS starts for Process 2
+# T: 1030 = Process 2 is moved from Ready to Running
+# T: 1130 -> T: 8630 = Process 2 remains in the Running queue
+# T: 8730 = Process 2 is moved from the Running queue to the Blocked queue(screen) and it requests the databus
+# T: 8935 = Process 2 is released from the databus, it is moved from the Blocked queue(screen) to the Ready queue and CS starts for Process 2
+# T: 8940 = Process 2 is moved from Ready to Running
+# T: 8945 = Process 2 ends and it is moved from Running to Exit
+# best 100 8745
+#
+# Note Process 1 is moved from Ready to Running at 205 and then 100us later (i.e. 305) first i/o event starts
+# But then when it is again moved from Ready to Running at 335us it only takes 10us before the second i/o event starts (i.e. 345us)
+# This is because according to process 1 description i/o event 1 starts at 100us and then i/o event starts at 110us 
+# Same for time = 382us, it takes 70us before the next i/o event starts (i.e. 452us, 180-110 = 70, 452-382 = 70)
+# Time  = 475us, it takes 10us before the next i/o event starts (i.e. 485us, 190-180 = 10us, 485 - 475 = 10us)
+#
+# But for some reason when process 2 enters the running queue at 1030us it takes 7700us before the i/o event starts (8730-1030 = 7700) when it should take 7520us (8000-480 = 7520)
+# Note when process 1 exits it has been in the running queue for a total of 210us since it entered at 595us ((695-595) + (905-805) + (1025-1015) = 210)
+# Note it takes 5us after process 2 has entered the running queue at 8940us to exit at 8940us (8005-8000 = 5us)
+# Therefore, process 1 has been in the running queue for 400us (which equals exit time) ((305-205) + (345-335) + (452-382) + (485-475) + (695-595) + (905-805) + (1025-1015) = 400us)
+# Therefore, process 2 has been in the running queue for 8005us (which equals exit time) ((590-490) + (800-700) + (1010-910) + (8730 - 1030) + (8945-8940) = 8005us)
+#
+# @ T = 305 Process 1 is moved to Blocked(hd) and then released by databus at 330, difference of 25us (330-305), using time = data/dataspeed ((1600/80000000) x 10^6 = 20) then account for data bus usage therefore 20 + 5 = 25us
+# @ T = 345 Process 1 is moved to Blocked(usb2), difference of 32us (377-345 = 32us), calculation: ((1600/60000000) x 10^6 = 26.67), round to 27us, 27+5 = 32us
+# @ T = 452 Process 1 is moved to Blocked(hd), difference of 18us (470 - 452 = 18us), calculation: ((1000/80000000) x 10^6 = 12.5), round to 13us, 13+5 = 18us
+# @ T = 485 Process 1 is moved to Blocked(usb2), difference of 22us ((507-485 = 22us)), calculation: ((1000/60000000) x 10^6 = 16.7), round to 17us, 17+5 = 22us
+# @ T = 8730 Process 2 is moved to Blocked(screen), difference of 205us((8935-8730 = 205us)), calculation: ((40/200000) x 10^6 = 200), 200 + 5 = 205us
+

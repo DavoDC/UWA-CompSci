@@ -1,0 +1,442 @@
+
+ #### TRACEFILE RAW #### 
+
+device	disk	80000 bytes/sec
+reboot
+process 5 50 {
+    i/o		220	disk	1500
+    exit        600
+}
+
+ #### TRACEFILE PROCESSING #### 
+
+
+ Device List (Original Order)
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) disk       80000                 
+
+ Sorted Device List
+  (Dev X) Name    TransferRate (bytes/sec) 
+  (Dev 0) disk       80000                 
+
+  (Proc X)  acTi   csP    csT    evC    evCT   evRo   evTo   exTi   id     quTi   stTi  
+  (Proc 0)  0      0      0      0      0      0      1      600    5      0      50    
+  (Ev X)    active      device        start     trans   
+   (Ev 0)    0          disk          270        18750   
+
+ #### SIMULATIONS #### 
+
+running simulate_job_mix( time_quantum = 10 usecs )
+@00000000   reboot with TQ=10,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000065   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000075   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000085   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000125   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000145   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000165   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000225   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000245   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000265   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019045   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019055   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019065   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019075   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019085   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019125   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019145   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019165   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019225   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019245   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019265   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019285   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019295   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019305   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019315   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019325   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019345   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019355   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019365   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019375   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019385   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019405   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 10 19365
+
+
+running simulate_job_mix( time_quantum = 20 usecs )
+@00000000   reboot with TQ=20,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000075   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019055   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019075   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019295   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019315   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019355   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019375   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 20 19365
+
+
+running simulate_job_mix( time_quantum = 30 usecs )
+@00000000   reboot with TQ=30,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000085   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000145   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000265   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019065   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019125   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019245   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019305   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019365   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 30 19365
+
+
+running simulate_job_mix( time_quantum = 40 usecs )
+@00000000   reboot with TQ=40,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019075   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019315   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019355   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 40 19365
+
+
+running simulate_job_mix( time_quantum = 50 usecs )
+@00000000   reboot with TQ=50,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019085   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019285   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019385   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 50 19365
+
+
+running simulate_job_mix( time_quantum = 60 usecs )
+@00000000   reboot with TQ=60,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019095   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 60 19365
+
+
+running simulate_job_mix( time_quantum = 70 usecs )
+@00000000   reboot with TQ=70,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000125   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000265   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019105   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019245   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019315   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019385   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 70 19365
+
+
+running simulate_job_mix( time_quantum = 80 usecs )
+@00000000   reboot with TQ=80,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019115   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019355   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 80 19365
+
+
+running simulate_job_mix( time_quantum = 90 usecs )
+@00000000   reboot with TQ=90,                                               Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000145   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019125   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019305   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 90 19365
+
+
+running simulate_job_mix( time_quantum = 100 usecs )
+@00000000   reboot with TQ=100,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019135   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 100 19365
+
+
+running simulate_job_mix( time_quantum = 110 usecs )
+@00000000   reboot with TQ=110,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000165   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019145   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019365   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 110 19365
+
+
+running simulate_job_mix( time_quantum = 120 usecs )
+@00000000   reboot with TQ=120,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019155   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019275   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 120 19365
+
+
+running simulate_job_mix( time_quantum = 130 usecs )
+@00000000   reboot with TQ=130,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019165   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019295   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 130 19365
+
+
+running simulate_job_mix( time_quantum = 140 usecs )
+@00000000   reboot with TQ=140,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019175   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019315   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 140 19365
+
+
+running simulate_job_mix( time_quantum = 150 usecs )
+@00000000   reboot with TQ=150,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019185   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019335   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 150 19365
+
+
+running simulate_job_mix( time_quantum = 160 usecs )
+@00000000   reboot with TQ=160,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019195   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019355   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 160 19365
+
+
+running simulate_job_mix( time_quantum = 170 usecs )
+@00000000   reboot with TQ=170,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000225   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019205   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019375   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 170 19365
+
+
+running simulate_job_mix( time_quantum = 180 usecs )
+@00000000   reboot with TQ=180,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019215   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019395   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 180 19365
+
+
+running simulate_job_mix( time_quantum = 190 usecs )
+@00000000   reboot with TQ=190,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000245   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019225   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 190 19365
+
+
+running simulate_job_mix( time_quantum = 200 usecs )
+@00000000   reboot with TQ=200,                                              Ne:5| Re: Ru: Ex: Bl:
+@00000050   p5.NEW->READY,                                                   Ne: Re:5| Ru: Ex: Bl:
+@00000055   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00000255   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00000275   p5.RUNNING->BLOCKED(disk)                                        Ne: Re: Ru: Ex: Bl:5|
+@00019030   p5.BLOCKED(disk)->READY                                          Ne: Re:5| Ru: Ex: Bl:
+@00019035   p5.READY->RUNNING (frTQ),                                        Ne: Re: Ru:5| Ex: Bl:
+@00019235   p5.freshTQ (ign'd)                                               Ne: Re: Ru:5| Ex: Bl:
+@00019415   p5.RUNNING->EXIT                                                 Ne: Re: Ru: Ex:5| Bl:
+total_process_completion_time 200 19365
+
+best 200 19365
