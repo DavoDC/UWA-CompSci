@@ -14,7 +14,7 @@
 #include <stdbool.h>
 
 // Import header
-#include "demoh.h"
+//#include "demoh.h"
 
 /*
  * A function demonstration looping and printing
@@ -222,7 +222,7 @@ void stringDemo()
 
     // Copy string (RIGHT TO LEFT)
     printf("\nString copy: Gauntlet <- Thanos");
-    char gauntlet[15] = "GAUNTLET";
+    char gauntlet[100] = "GAUNTLET";
     strcpy(gauntlet, thanos);
     printf("\n Gauntlet is now: %s", gauntlet);
     printf("\n");
