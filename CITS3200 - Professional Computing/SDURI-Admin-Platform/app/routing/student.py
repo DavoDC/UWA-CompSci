@@ -31,7 +31,7 @@ def students(username):
 @login_required
 def student_details(username):
     rend_temp = render_template('student/details/landing.html',
-                                title="Student Details Landing");
+                                title="Student Details Landing")
     return utils.student_page(rend_temp)
 
 
