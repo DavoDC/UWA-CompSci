@@ -3,7 +3,7 @@ apt-get update
 apt-get install build-essentials
 apt-get install gcc
 
-// Edit
+// Edit within console
 nano Hello.c
 
 // Compile 
@@ -15,7 +15,7 @@ mycc Hello hello.c
 // Rename
 mv old.c new.c
 
-// Change 
+// CMD commands to change default user
 kali config --default-user root
 kali config --default-user david
 sudo su    // Go into ROOT in place!
