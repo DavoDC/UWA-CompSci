@@ -1,0 +1,17 @@
+
+Only need to run rarely!!
+
+
+MAIN CONTAINER
+
+docker run --name dave_cont -p 6080:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+LAB 7 CONTAINERS
+
+docker run --name m1 -p 6010:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+docker run --name m2 -p 6020:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+docker run --name m3 -p 6030:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+
+ONCE YOU SEE LINES LIKE THIS + RUNNING CONT IN GUI, ITS DONE 
+2021-09-15 14:35:10,195 INFO success: novnc entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=House
+comment0.text=\r\n\ Models\ a\ House\r\n\r\n\ @author\ David\r\n\ @version\ 1.0\r\n
+comment1.params=streetNumber\ streetName\ residentCount
+comment1.target=House(int,\ java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\r\n
+comment2.params=
+comment2.target=void\ getInfo()
+numComments=3

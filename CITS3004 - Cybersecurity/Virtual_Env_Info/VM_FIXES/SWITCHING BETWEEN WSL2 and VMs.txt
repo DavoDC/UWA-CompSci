@@ -1,0 +1,19 @@
+ENABLE VIRTUAL MACHINES AND DISABLE WSL2:
+(DISABLES DOCKER AS WELL) 
+
+bcdedit /set hypervisorlaunchtype off
+
+RESTART!!!
+WSL will give error , you cannot access files
+VM will no longer say credential guard error or others
+
+
+
+
+ENABLE WSL2 + DOCKER AND DISABLE VIRTUAL MACHINES:
+
+bcdedit /set hypervisorlaunchtype auto
+
+RESTART!!!
+WSL will work and you can access files
+VM will say credential guard error or others

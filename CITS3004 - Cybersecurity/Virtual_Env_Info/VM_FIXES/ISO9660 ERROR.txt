@@ -1,0 +1,16 @@
+When mounting VMWARE TOOLS (VMWARE)
+or GUEST ADDITIONS CD (VIRTUALBOX)
+
+unknown file system iso9660
+
+Somehow "iso9660" module not loaded. depmod scans all modules and create module dependencies.
+
+Fix:
+########### sudo depmod -a #########
+
+THEN TRY TO ACCESS VIA FILE MANAGER
+Find "Run software" button after CD
+
+
+sudo mount /dev/sr0 /mnt
+ls -l /mnt

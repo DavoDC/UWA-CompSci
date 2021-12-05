@@ -1,0 +1,1 @@
+HMAC-MD5(plain.txt)= 5e30e6b09eeda51a4947e381e897a816

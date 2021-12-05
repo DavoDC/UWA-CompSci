@@ -1,0 +1,16 @@
+
+############# Lab 8 - Task 2 - LSB Encoder/Decoder ############# 
+
+######## ENCODING MSG + IMG
+Loaded image
+New image created.
+Stored pixels to new image.
+Image saved.
+Encoded Hidden.txt into Plane.png to produce: Plane+Hidden.png
+
+######## DECODING IMAGE
+Decoding Plane+Hidden.png...
+Loaded image.
+Extracting LSB from pixels...
+Output:
+I can turn invisible. Itÿs a superpower, or at least a secret power. But itÿs not like in the movies, and Iÿm not a superhero, so donÿt start thinking that. Heroesare the stars who save the day. I justÿdisappear.See, I didnÿt know, at first, that I had this magic. I just knew thatteachers forgot my name, and kids didnÿt ask me to play, and one time,at the end of fourth grade, a boy in my class frowned at me and said, Where did you come from? I donÿt think Iÿve ever seen you before.I used to hate being invisible. But now I understand: itÿs becauseIÿm magic.My older sister, Sam, says itÿs not a real supersecret powerÿitÿsjust called being shy. But Sam can be rude.And the truth is, my power can come in handy. Like when Momand Sam fight. Like right now.I wrap myself in invisibility and rest my forehead against the backseatwindow, watching raindrops slide down the side of our old stationwagon.ÿYou should stop the car,ÿ Sam says to Mom.Except Sam actually says this to her phone, because she doesnÿtlook up. Sheÿs sitting in the passenger seat with her feet slammedagainst the glove compartment, knees smashed into her chest, herwhole body curled around her glowing screen.Mom sighs. ÿOh, please, we donÿt need to stop. Itÿs just a littlerain.ÿ But she ticks the windshield wipers up a notch and taps thebrakes until weÿre going slug-slow.The rain started as soon as we entered Washington State, and it only gets worse as our car inches past the hand-painted WELCOME TO SUNBEAM! sign.Welcome to Halmoniÿs town, a town of nonstop rain, its name likean inside joke.Sam smacks her black-painted lips. ÿK.ÿThatÿs all. Just one letter.She tap-taps her screen, sending bubbles of words and emojis toall her friends back home.I wonder what sheÿs saying in those messages. Sometimes, when I let myself, I imagine sheÿs writing to me.ÿSam, can you at least try to have a good attitude about this?ÿ

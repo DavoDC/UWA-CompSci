@@ -1,0 +1,27 @@
+
+
+Example1 (Seed):
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\overlay2
+\cc026716c247ae53fd156493ecb06e94046651e2d9f14508e57ab19e5ec4fb65\diff\home\seed
+
+Example 2 (Seed):
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\overlay2\
+6a23949e22b2a661365f096808511a7091f4432ecb6aa177bbe44891a34a0dd1\diff\home\seed
+
+Example:
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\overlay2\6a23949e22b2a661365f096808511a7091f4432ecb6aa177bbe44891a34a0dd1
+\diff\home\seed\TEST_BED\DIFFIE
+
+Example 3 (Root)
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\overlay2\
+6a23949e22b2a661365f096808511a7091f4432ecb6aa177bbe44891a34a0dd1\diff\root
+
+
+Notes:
+hex part is unique to container
+create a file with a unique name and search for it
+
+Setup:
+put fix.sh in root
+make docker repos in seed
+add docker repos to quick access

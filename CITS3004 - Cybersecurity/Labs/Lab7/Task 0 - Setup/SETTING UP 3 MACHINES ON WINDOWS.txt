@@ -1,0 +1,20 @@
+Lab 7: Commands for setting up three machines
+
+Creating the three containers (with custom names):
+docker run --name m1 -p 6010:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+docker run --name m2 -p 6020:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+docker run --name m3 -p 6030:80 --privileged -v /dev/shm:/dev/shm almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+
+
+Entering the three containers (just paste this into cmd to get access to the container's shell): 
+docker start m1 && docker exec -it m1 bash
+docker start m2 && docker exec -it m2 bash
+docker start m3 && docker exec -it m3 bash
+
+
+(P.S - With this method, 
+you don't need to access the shell via the browser anymore 
+(no more LX terminal) and you can paste in commands!  )

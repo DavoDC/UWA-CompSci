@@ -1,0 +1,548 @@
+david ../unfair_game: python3 py_unfair.py
+[+] Opening connection to cits4projtg.cybernemosyne.xyz on port 1001: Done
+1:  Number:
+2:  Wrong! It was 1945965927!
+3:  Rounds: 1, Wins: 0, Fails: 1
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+[*] Closed connection to cits4projtg.cybernemosyne.xyz port 1001
+david ../unfair_game: python3 py_unfair.py
+[+] Opening connection to cits4projtg.cybernemosyne.xyz on port 1001: Done
+1:  Number:
+2:  Wrong! It was 420215009!
+3:  Rounds: 1, Wins: 0, Fails: 1
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+[*] Closed connection to cits4projtg.cybernemosyne.xyz port 1001
+david ../unfair_game: python3 py_unfair.py
+[+] Opening connection to cits4projtg.cybernemosyne.xyz on port 1001: Done
+1:  Number:
+2:  Wrong! It was 581354845!
+3:  Rounds: 1, Wins: 0, Fails: 1
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+[*] Closed connection to cits4projtg.cybernemosyne.xyz port 1001
+david ../unfair_game: python3 py_unfair.py
+[+] Opening connection to cits4projtg.cybernemosyne.xyz on port 1001: Done
+1:  Number:
+2:  Wrong! It was 301379928!
+3:  Rounds: 1, Wins: 0, Fails: 1
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+[*] Closed connection to cits4projtg.cybernemosyne.xyz port 1001
+
+
+
+
+david ../unfair_game: python3 py_unfair.py
+[+] Opening connection to cits4projtg.cybernemosyne.xyz on port 1001: Done
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 1, Wins: 1, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 2, Wins: 2, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 3, Wins: 3, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 4, Wins: 4, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 5, Wins: 5, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 6, Wins: 6, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 7, Wins: 7, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 8, Wins: 8, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 9, Wins: 9, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 10, Wins: 10, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 11, Wins: 11, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 12, Wins: 12, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 13, Wins: 13, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 14, Wins: 14, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 15, Wins: 15, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 16, Wins: 16, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 17, Wins: 17, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 18, Wins: 18, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 19, Wins: 19, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 20, Wins: 20, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 21, Wins: 21, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 22, Wins: 22, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 23, Wins: 23, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 24, Wins: 24, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 25, Wins: 25, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 26, Wins: 26, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 27, Wins: 27, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 28, Wins: 28, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 29, Wins: 29, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 30, Wins: 30, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 31, Wins: 31, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 32, Wins: 32, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 33, Wins: 33, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 34, Wins: 34, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 35, Wins: 35, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 36, Wins: 36, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 37, Wins: 37, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 38, Wins: 38, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 39, Wins: 39, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 40, Wins: 40, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 41, Wins: 41, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 42, Wins: 42, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 43, Wins: 43, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 44, Wins: 44, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 45, Wins: 45, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 46, Wins: 46, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 47, Wins: 47, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 48, Wins: 48, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 49, Wins: 49, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 50, Wins: 50, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 51, Wins: 51, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 52, Wins: 52, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 53, Wins: 53, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 54, Wins: 54, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 55, Wins: 55, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 56, Wins: 56, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 57, Wins: 57, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 58, Wins: 58, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 59, Wins: 59, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 60, Wins: 60, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 61, Wins: 61, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 62, Wins: 62, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 63, Wins: 63, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 64, Wins: 64, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 65, Wins: 65, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 66, Wins: 66, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 67, Wins: 67, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 68, Wins: 68, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 69, Wins: 69, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 70, Wins: 70, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 71, Wins: 71, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 72, Wins: 72, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 73, Wins: 73, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 74, Wins: 74, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 75, Wins: 75, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 76, Wins: 76, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 77, Wins: 77, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 78, Wins: 78, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 79, Wins: 79, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 80, Wins: 80, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 81, Wins: 81, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 82, Wins: 82, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 83, Wins: 83, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 84, Wins: 84, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 85, Wins: 85, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 86, Wins: 86, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 87, Wins: 87, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 88, Wins: 88, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 89, Wins: 89, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 90, Wins: 90, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 91, Wins: 91, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 92, Wins: 92, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 93, Wins: 93, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 94, Wins: 94, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 95, Wins: 95, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 96, Wins: 96, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 97, Wins: 97, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 98, Wins: 98, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 99, Wins: 99, Fails: 0
+4:
+5:  I am thinking of a random integer, which number do you think it is?
+1:  Number:
+2:  Congratulations! You Guessed Correctly!
+3:  Rounds: 100, Wins: 100, Fails: 0
+4:
+5:  +------------------------------------+
+WON!!
+
+
+
+
+b'|            YOU HAVE WON!           |\n'
+b'+------------------------------------+\n'
+b'\n'
+b'Flag: CTF{0i_y0v_w3rE_cHe4t!nG!_y0u_w3rEnT_sUpPo5eD_2_gVeS5_mY_nUmBeRs!1!!}\n'
+[*] Closed connection to cits4projtg.cybernemosyne.xyz port 1001

@@ -1,0 +1,1 @@
+{"chain":[{"index":1,"previous_hash":"1","proof":100,"timestamp":1628952049.001229,"transactions":[]},{"index":2,"previous_hash":"5daa5529b400d5bfef39caf912b3fba1e04c5fdd9b76f778071ea3848c6c8e0a","proof":27218,"timestamp":1628952057.2158425,"transactions":[{"amount":1,"recipient":"453256a3e1a941e19e9d8a169c7c5eaf","sender":"0"}]}],"length":2}

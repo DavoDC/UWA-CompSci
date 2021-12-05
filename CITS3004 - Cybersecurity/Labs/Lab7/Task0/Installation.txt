@@ -1,0 +1,3 @@
+docker run --privileged -p 6081:80 -v /Users/alvaro/Documents/SharedDockerCITS3004:/home/seed/Labs --name AlvaroPrivileged2-CITS3004 almonsalve/lab-ubuntu-seed-lxde-novnc:focal-arm64
+
+docker run --privileged -p 6082:80 -v /Users/alvaro/Documents/SharedDockerCITS3004:/home/seed/Labs --name AlvaroPrivileged3-CITS3004 almonsalve/lab-ubuntu-seed-lxde-novnc:focal-arm64

@@ -16,6 +16,122 @@
         <itemPath>code/examPrac/examQ</itemPath>
         <itemPath>code/examPrac/examQs.c</itemPath>
       </logicalFolder>
+      <logicalFolder name="labs" displayName="labs" projectFiles="true">
+        <logicalFolder name="lab1" displayName="lab1" projectFiles="true">
+          <logicalFolder name="bruteForceRot"
+                         displayName="bruteForceRot"
+                         projectFiles="true">
+            <itemPath>code/labs/lab1/bruteForceRot/bfRot</itemPath>
+            <itemPath>code/labs/lab1/bruteForceRot/bfRot.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="orig" displayName="orig" projectFiles="true">
+            <itemPath>code/labs/lab1/orig/rotate</itemPath>
+            <itemPath>code/labs/lab1/orig/rotate.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q1-6" displayName="q1-6" projectFiles="true">
+            <itemPath>code/labs/lab1/q1-6/rot6</itemPath>
+            <itemPath>code/labs/lab1/q1-6/rot6.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q7-8" displayName="q7-8" projectFiles="true">
+            <itemPath>code/labs/lab1/q7-8/rot8</itemPath>
+            <itemPath>code/labs/lab1/q7-8/rot8.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q9" displayName="q9" projectFiles="true">
+            <itemPath>code/labs/lab1/q9/rot9</itemPath>
+            <itemPath>code/labs/lab1/q9/rot9.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="scanRot" displayName="scanRot" projectFiles="true">
+            <itemPath>code/labs/lab1/scanRot/scanRot</itemPath>
+            <itemPath>code/labs/lab1/scanRot/scanRot.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="lab2" displayName="lab2" projectFiles="true">
+          <logicalFolder name="q1" displayName="q1" projectFiles="true">
+            <itemPath>code/labs/lab2/q1/q1</itemPath>
+            <itemPath>code/labs/lab2/q1/q1.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q2-3" displayName="q2-3" projectFiles="true">
+            <itemPath>code/labs/lab2/q2-3/q3</itemPath>
+            <itemPath>code/labs/lab2/q2-3/q3.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q4" displayName="q4" projectFiles="true">
+            <itemPath>code/labs/lab2/q4/q4</itemPath>
+            <itemPath>code/labs/lab2/q4/q4.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q5" displayName="q5" projectFiles="true">
+            <itemPath>code/labs/lab2/q5/q5</itemPath>
+            <itemPath>code/labs/lab2/q5/q5.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q6" displayName="q6" projectFiles="true">
+            <itemPath>code/labs/lab2/q6/q6</itemPath>
+            <itemPath>code/labs/lab2/q6/q6.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="lab3" displayName="lab3" projectFiles="true">
+          <logicalFolder name="q1" displayName="q1" projectFiles="true">
+            <itemPath>code/labs/lab3/q1/q1</itemPath>
+            <itemPath>code/labs/lab3/q1/q1.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q2" displayName="q2" projectFiles="true">
+            <itemPath>code/labs/lab3/q2/q2</itemPath>
+            <itemPath>code/labs/lab3/q2/q2.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q3" displayName="q3" projectFiles="true">
+            <itemPath>code/labs/lab3/q3/q3</itemPath>
+            <itemPath>code/labs/lab3/q3/q3.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q4" displayName="q4" projectFiles="true">
+            <itemPath>code/labs/lab3/q4/q4</itemPath>
+            <itemPath>code/labs/lab3/q4/q4.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q5" displayName="q5" projectFiles="true">
+            <logicalFolder name="complex" displayName="complex" projectFiles="true">
+              <itemPath>code/labs/lab3/q5/complex/q5</itemPath>
+              <itemPath>code/labs/lab3/q5/complex/q5.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="simp" displayName="simp" projectFiles="true">
+              <itemPath>code/labs/lab3/q5/simp/q5</itemPath>
+              <itemPath>code/labs/lab3/q5/simp/q5.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="lab4" displayName="lab4" projectFiles="true">
+          <logicalFolder name="q1" displayName="q1" projectFiles="true">
+            <itemPath>code/labs/lab4/q1/q1</itemPath>
+            <itemPath>code/labs/lab4/q1/q1.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q2" displayName="q2" projectFiles="true">
+            <itemPath>code/labs/lab4/q2/q2</itemPath>
+            <itemPath>code/labs/lab4/q2/q2.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q4" displayName="q4" projectFiles="true">
+            <itemPath>code/labs/lab4/q4/q4</itemPath>
+            <itemPath>code/labs/lab4/q4/q4.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="lab5" displayName="lab5" projectFiles="true">
+          <logicalFolder name="q1" displayName="q1" projectFiles="true">
+            <itemPath>code/labs/lab5/q1/q1</itemPath>
+            <itemPath>code/labs/lab5/q1/q1.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q2" displayName="q2" projectFiles="true">
+            <logicalFolder name="src" displayName="src" projectFiles="true">
+              <itemPath>code/labs/lab5/q2/src/makefile</itemPath>
+              <itemPath>code/labs/lab5/q2/src/pointers.c</itemPath>
+              <itemPath>code/labs/lab5/q2/src/stringtest</itemPath>
+              <itemPath>code/labs/lab5/q2/src/stringtest.c</itemPath>
+              <itemPath>code/labs/lab5/q2/src/stringtest.h</itemPath>
+            </logicalFolder>
+            <itemPath>code/labs/lab5/q2/build.sh</itemPath>
+          </logicalFolder>
+          <logicalFolder name="q3" displayName="q3" projectFiles="true">
+            <itemPath>code/labs/lab5/q3/q3</itemPath>
+            <itemPath>code/labs/lab5/q3/q3.c</itemPath>
+            <itemPath>code/labs/lab5/q3/tes.txt</itemPath>
+            <itemPath>code/labs/lab5/q3/words.txt</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,10 +157,120 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-std=c99 -Wall -Werror -pedantic</commandLine>
+        </cTool>
       </compileType>
       <item path="code/examPrac/examQ" ex="false" tool="3" flavor2="0">
       </item>
       <item path="code/examPrac/examQs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/bruteForceRot/bfRot" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/bruteForceRot/bfRot.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="code/labs/lab1/orig/rotate" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/orig/rotate.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q1-6/rot6" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q1-6/rot6.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q7-8/rot8" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q7-8/rot8.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q9/rot9" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q9/rot9.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/scanRot/scanRot" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/scanRot/scanRot.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q2-3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q2-3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q5/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q5/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q6/q6" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q6/q6.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q2/q2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q2/q2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/complex/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/complex/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/simp/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/simp/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q2/q2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q2/q2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/build.sh" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/pointers.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/tes.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/words.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -70,6 +296,113 @@
       <item path="code/examPrac/examQ" ex="false" tool="3" flavor2="0">
       </item>
       <item path="code/examPrac/examQs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/bruteForceRot/bfRot" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/bruteForceRot/bfRot.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="code/labs/lab1/orig/rotate" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/orig/rotate.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q1-6/rot6" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q1-6/rot6.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q7-8/rot8" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q7-8/rot8.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q9/rot9" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/q9/rot9.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/scanRot/scanRot" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab1/scanRot/scanRot.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q2-3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q2-3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q5/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q5/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q6/q6" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab2/q6/q6.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q2/q2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q2/q2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/complex/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/complex/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/simp/q5" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab3/q5/simp/q5.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q2/q2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q2/q2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q4/q4" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab4/q4/q4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q1/q1" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q1/q1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/build.sh" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/pointers.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q2/src/stringtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/q3" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/q3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/tes.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="code/labs/lab5/q3/words.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

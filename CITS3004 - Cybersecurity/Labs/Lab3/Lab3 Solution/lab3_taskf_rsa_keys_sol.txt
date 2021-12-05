@@ -1,0 +1,43 @@
+RSA Private-Key: (512 bit, 2 primes)
+modulus:
+    00:d7:39:ab:df:e2:b7:28:ca:da:1c:61:e9:22:a3:
+    7f:c7:3e:76:c2:b6:ff:4a:ea:dd:49:83:6d:14:61:
+    7e:8e:da:43:4c:58:f0:03:4f:5a:ce:62:e3:f6:e5:
+    86:8c:48:31:65:e2:38:b6:d9:f7:51:bc:2c:e4:b7:
+    55:3b:62:3a:73
+publicExponent: 65537 (0x10001)
+privateExponent:
+    00:83:c3:00:e0:4d:f2:07:fd:38:4e:8b:fa:a8:84:
+    24:24:1c:af:a4:41:58:45:cb:47:b2:4b:cd:a9:de:
+    8e:16:71:95:16:e9:c8:b4:7f:78:73:b4:15:21:74:
+    d6:16:f1:89:12:37:88:61:12:9f:89:56:ad:6c:fb:
+    c7:10:34:e2:d1
+prime1:
+    00:fb:0e:43:40:47:c0:d9:cc:15:4c:fc:8a:d1:3e:
+    43:45:18:0d:5e:57:19:c8:c1:fa:9f:24:fb:ac:15:
+    70:12:cf
+prime2:
+    00:db:76:c3:8b:bb:59:f2:a0:4b:6a:40:d8:c3:da:
+    92:78:06:d3:30:b6:2c:d3:68:ce:d2:02:97:ea:a9:
+    e8:97:1d
+exponent1:
+    18:ed:3a:9a:28:45:aa:9a:4b:c7:20:0f:fc:64:8d:
+    33:50:07:0b:c5:e4:26:7d:b4:0f:97:11:71:ed:92:
+    fa:1b
+exponent2:
+    00:8f:dc:3a:32:ce:8d:17:ce:9b:a0:fb:01:1c:e1:
+    9a:41:b3:b7:9c:a6:ce:9b:86:88:8c:81:c6:b3:bc:
+    cd:0a:c1
+coefficient:
+    00:c9:2c:b4:77:20:c3:05:07:22:6d:8c:27:50:34:
+    b5:fc:c9:83:f0:8c:cb:4b:d4:95:f0:e3:ce:b2:b1:
+    cd:c1:57
+-----BEGIN RSA PRIVATE KEY-----
+MIIBPAIBAAJBANc5q9/ityjK2hxh6SKjf8c+dsK2/0rq3UmDbRRhfo7aQ0xY8ANP
+Ws5i4/blhoxIMWXiOLbZ91G8LOS3VTtiOnMCAwEAAQJBAIPDAOBN8gf9OE6L+qiE
+JCQcr6RBWEXLR7JLzanejhZxlRbpyLR/eHO0FSF01hbxiRI3iGESn4lWrWz7xxA0
+4tECIQD7DkNAR8DZzBVM/IrRPkNFGA1eVxnIwfqfJPusFXASzwIhANt2w4u7WfKg
+S2pA2MPakngG0zC2LNNoztICl+qp6JcdAiAY7TqaKEWqmkvHIA/8ZI0zUAcLxeQm
+fbQPlxFx7ZL6GwIhAI/cOjLOjRfOm6D7ARzhmkGzt5ymzpuGiIyBxrO8zQrBAiEA
+ySy0dyDDBQcibYwnUDS1/MmD8IzLS9SV8OPOsrHNwVc=
+-----END RSA PRIVATE KEY-----

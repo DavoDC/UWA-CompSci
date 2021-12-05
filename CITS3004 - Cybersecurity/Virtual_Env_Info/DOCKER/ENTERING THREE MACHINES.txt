@@ -1,0 +1,9 @@
+
+
+docker start m1 && docker exec -it m1 bash
+
+
+docker start m2 && docker exec -it m2 bash
+
+
+docker start m3 && docker exec -it m3 bash

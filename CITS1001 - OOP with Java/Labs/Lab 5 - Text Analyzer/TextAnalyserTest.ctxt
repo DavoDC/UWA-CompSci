@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=TextAnalyserTest
+comment0.text=\r\n\ The\ test\ class\ TextAnalyserTest.\r\n\r\n\ @author\ \ Lyndon\ While\r\n\ @version\ April\ 2015\r\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\ \r\n
+comment2.params=
+comment2.target=void\ testAnalysers()
+comment3.params=
+comment3.target=void\ testanalyse()
+comment4.params=
+comment4.target=void\ testanalyseFile()
+comment5.params=
+comment5.target=void\ testreset()
+comment6.params=
+comment6.target=void\ testhistogram()
+comment7.params=s\ t\ x\ xs\ m
+comment7.target=void\ compare(java.lang.String,\ TextAnalyser,\ int,\ int[],\ char)
+numComments=8

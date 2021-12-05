@@ -1,0 +1,18 @@
+
+
+WINDOWS
+
+
+AMD64 Instruction Set:
+docker pull almonsalve/lab-ubuntu-seed-lxde-novnc:focal-amd64
+
+
+
+
+
+
+
+
+APPLE:
+ARM64 Instruction Set (Apple M1):
+docker pull almonsalve/lab-ubuntu-seed-lxde-novnc:focal-arm64

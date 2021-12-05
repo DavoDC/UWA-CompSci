@@ -1,0 +1,1 @@
+HMAC-SHA1(plain.txt)= 3bf3289a3bac18e92554da4275e87429dfda3afc
