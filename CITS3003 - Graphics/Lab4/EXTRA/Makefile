@@ -19,7 +19,7 @@
 ##
 ##=============================================================================
 
-NAME		=	spinningcube
+NAME		=	spincube
 
 DIRECTORY	=	SpinningCube
 

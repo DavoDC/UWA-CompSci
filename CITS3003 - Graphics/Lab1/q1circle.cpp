@@ -15,12 +15,14 @@ init(void)
 	vec2 vertices[3] = {
 		vec2(-1.0, -1.0), vec2(0.0, 1.0), vec2(1.0, -1.0)
 	};
+	
+        // Declare points array
+	vec2 points[NumPoints];
 
-	// Select an arbitrary initial point inside of the triangle
+        // Select an arbitrary initial point inside of the triangle
 	points[0] = vec2(0.25, 0.50);
 
-	// Compute and store N-1 new points
-	vec2 points[NumPoints];
+        // Compute and store N-1 new points
 	for (int i = 1; i < NumPoints; ++i) {
 
 		// Status of current point search

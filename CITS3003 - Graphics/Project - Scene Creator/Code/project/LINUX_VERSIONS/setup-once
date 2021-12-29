@@ -13,4 +13,11 @@
 ln -s libassimp.so.3.1.1 libassimp.so.3 
 ln -s libassimp.so.3 libassimp.so 
 
-ln -s /usr/lib64/libGLEW.so.1.10 libGLEW.so
+
+# Invalid
+#ln -s /usr/lib64/libGLEW.so.1.10 libGLEW.so
+
+# Added by DC
+ln -s /usr/lib/x86_64-linux-gnu/libGLEW.so libGLEW.so
+ln -s /usr/lib/x86_64-linux-gnu/libGLEW.so.2.1 libGLEW.so.2.0
+
