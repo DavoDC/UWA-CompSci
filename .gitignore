@@ -1,0 +1,11 @@
+
+
+############## CITS3003 Project
+# Ignore build files which need to be re-generated for each new path
+CITS3003 - Graphics/Project - Scene Creator/cmake-build/*
+
+# Ignore executable which can be regenerated
+CITS3003 - Graphics/Project - Scene Creator/start_scene
+
+# Ignore log file
+CITS3003 - Graphics/Project - Scene Creator/assimp_log.txt
