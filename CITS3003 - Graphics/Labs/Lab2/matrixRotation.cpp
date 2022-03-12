@@ -1,6 +1,6 @@
-/* 
+/*
  * Original file name: q2sqrotate.cpp
- * Rotates a square by defining two triangles. 
+ * Rotates a square by defining two triangles.
  * Each vertex has a different colour.
  * MODIFIED BY DC
  * USES 4x4 MATRIX FOR ROTATION
@@ -40,74 +40,86 @@ GLint matrix;
 // Matrix selection character
 char matrixChar = 'x';
 
-
-
-//----------------------------------------------------------------------------
-// Initialization function
-//----------------------------------------------------------------------------
-
+/**
+ * Initialization Function
+ */
 void init(void) {
 
-    // Create a vertex array object
-    GLuint vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    // Create a vertex array object (VAO)
+    GLuint vao; // Holder
+    // https://docs.gl/gl4/glGenVertexArrays
+    glGenVertexArrays(1, &vao); // Type
+    // https://docs.gl/gl4/glBindVertexArray
+    glBindVertexArray(vao); // Bind
 
-    // Create and initialize a buffer object
-    GLuint buffer;
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    // Create and initialize a vertex buffer object (VBO)
+    GLuint buffer; // Holder
+    // https://docs.gl/gl4/glGenBuffers
+    glGenBuffers(1, &buffer); // Type
+    // https://docs.gl/gl4/glBindBuffer
+    glBindBuffer(GL_ARRAY_BUFFER, buffer); // Bind
 
-    // First, we create an empty buffer of the size we need by passing
-    //   a NULL pointer for the data values
-    glBufferData(GL_ARRAY_BUFFER, sizeof (points) + sizeof (colors),
-            NULL, GL_STATIC_DRAW);
+    // Initialise vertex buffer
+    // - Will hold points and colours
+    // - At this stage, we just pass a NULL pointer for the data values
+    // https://docs.gl/gl4/glBufferData
+    glBufferData(GL_ARRAY_BUFFER, sizeof (points) + sizeof (colors), NULL, GL_STATIC_DRAW);
 
-    // Next, we load the real data in parts.  We need to specify the
-    //   correct byte offset for placing the color data after the point
-    //   data in the buffer.  Conveniently, the byte offset we need is
-    //   the same as the size (in bytes) of the points array, which is
-    //   returned from "sizeof(points)".
+    // Now we load the real data in parts.
+    // We need to specify the correct byte offset for placing the color data after the point
+    // data in the buffer.  Conveniently, the byte offset we need is the same as the size
+    // (in bytes) of the points array, which is returned from "sizeof(points)".
+    // https://docs.gl/gl4/glBufferSubData
+    // We load the points in first
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof (points), points);
+    // We load the colors in after the points
     glBufferSubData(GL_ARRAY_BUFFER, sizeof (points), sizeof (colors), colors);
 
     // Load shaders and use the resulting shader program
+    // The shaders are located in my shaders folder
     GLuint program = InitShader("shaders/vrotate2dMatrix.glsl", "shaders/fshader24.glsl");
+    // https://docs.gl/gl4/glUseProgram
     glUseProgram(program);
 
-    // Initialize the vertex position attribute from the vertex shader    
+    // Initialize the vertex position attribute from the vertex shader
+    // https://docs.gl/gl4/glGetAttribLocation
     GLuint vPosition = glGetAttribLocation(program, "vPosition");
+    // https://docs.gl/gl4/glEnableVertexAttribArray
     glEnableVertexAttribArray(vPosition);
-    glVertexAttribPointer(vPosition, 3, GL_FLOAT, GL_FALSE, 0,
-            BUFFER_OFFSET(0));
+    // https://docs.gl/gl4/glVertexAttribPointer
+    // - vPosition = GLuint index = vPosition identifier/index
+    // - 3 = GLint size = number of components per vertex = 3 because vec3 in use
+    // - GL_FLOAT = GLenum type = data type of array elements = Float because points are floats
+    // - GL_FALSE = GLboolean normalized = whether fixed-point data values should be normalized
+    // - 0 = GLsizei stride = byte offset between consecutive generic vertex attributes
+    // - BUFFER_OFFSET(0) = const GLvoid* pointer = offset of the first vertex in the buffer
+    glVertexAttribPointer(vPosition, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
 
-    // Likewise, initialize the vertex color attribute.  Once again, we
-    //    need to specify the starting offset (in bytes) for the color
-    //    data.  Just like loading the array, we use "sizeof(points)"
-    //    to determine the correct value.
+    // Likewise, initialize the vertex color attribute.
+    // Once again, we need to specify the starting offset (in bytes) for the color data.
+    // Just like loading the array, we use "sizeof(points)" to determine the correct value.
+    //
+    // Same as before but buffer pointer moves up
     GLuint vColor = glGetAttribLocation(program, "vColor");
     glEnableVertexAttribArray(vColor);
-    glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 0,
-            BUFFER_OFFSET(sizeof (points)));
+    glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof (points)));
 
     // Enable depth testing
     // glEnable( GL_DEPTH_TEST );
 
     // Step 1 - Register shared variable in init()
     // Register matrix variable to rotMatrix shader variable
-    // Documentation = https://docs.gl/gl4/glGetUniformLocation
+    // https://docs.gl/gl4/glGetUniformLocation
     matrix = glGetUniformLocation(program, "rotMatrix");
 
     // Set white background
+    // https://docs.gl/gl4/glClearColor
     glClearColor(1.0, 1.0, 1.0, 1.0);
 }
 
-
-
-//----------------------------------------------------------------------------
-// Display function
-//----------------------------------------------------------------------------
-
+/**
+ * Display Callback Function
+ */
 void display(void) {
 
     // Make angle from time
@@ -118,21 +130,24 @@ void display(void) {
     float sinV = sin(angle);
 
     // Matrices are based off image:
+    // https://github.com/DavoDC/UWA-CompSci/blob/main/CITS3003%20-%20Graphics/Labs/Lab2/Images%20-%20Matrix%20Rotation/RotationMatrices.png
     // https://drive.google.com/file/d/1CPvvedGYrH9FkDgDNf6S8fxCiMq-dTOI/view
 
-    // 4x4 matrix for rotation on X-axis
+
+    // ### 4x4 Rotation Matrices
+    // X-Axis
     mat4 rotXm = mat4(1.0, 0.0, 0.0, 0.0,
             0.0, cosV, -sinV, 0.0,
             0.0, sinV, cosV, 0.0,
             0.0, 0.0, 0.0, 1.0);
 
-    // 4x4 matrix for rotation on Y-axis
+    // Y-axis
     mat4 rotYm = mat4(cosV, 0.0, sinV, 0.0,
             0.0, 1.0, 0.0, 0.0,
             -sinV, 0.0, cosV, 0.0,
             0.0, 0.0, 0.0, 1.0);
 
-    // 4x4 matrix for rotation on Z-axis
+    // Z-axis
     mat4 rotZm = mat4(cosV, -sinV, 0.0, 0.0,
             sinV, cosV, 0.0, 0.0,
             0.0, 0.0, 1.0, 0.0,
@@ -160,67 +175,64 @@ void display(void) {
     glUniformMatrix4fv(matrix, 1, GL_FALSE, currentMatrix);
 
     // Clear color buffer
+    // https://docs.gl/gl4/glClear
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw vertices as triangles
+    // https://docs.gl/gl4/glDrawArrays
     glDrawArrays(GL_TRIANGLES, 0, NumVertices);
 
     // Flush
+    // https://docs.gl/gl4/glFlush
     glFlush();
 }
 
-
-//----------------------------------------------------------------------------
-// Keyboard callback function
-//----------------------------------------------------------------------------
-
-// Helper function to notify about rotation change
-
+/*
+ * Helper function to notify about rotation change
+ */
 void notifyAboutRotChange() {
     printf("\nSwitched to %c rotation!", toupper(matrixChar));
     printf("\n");
 }
 
+/**
+ * Keyboard Callback Function. Called every time a key is pressed.
+ * @param key Code of key pressed
+ * @param x
+ * @param y
+ */
 void keyboard(unsigned char key, int x, int y) {
 
-    // Print key presses
-    // printf("key: %uc", key);
-
-    // ASCII codes = https://www.ascii-code.com/
+    // Act based on key pressed
     switch (key) {
         case 033:
-            // 033 is ASCII code (Octal) for Esc
             // Press Escape to exit
             exit(EXIT_SUCCESS);
             break;
+
         case 120:
-            // Press X for X rotation
+            // Press X for X rotation and Notify
             matrixChar = 'x';
-            // Notify
             notifyAboutRotChange();
             break;
+
         case 121:
-            // Press Y for Y rotation
+            // Press Y for Y rotation and Notify
             matrixChar = 'y';
-            // Notify
             notifyAboutRotChange();
             break;
+
         case 122:
-            // Press Z for Z rotation
+            // Press Z for Z rotation and Notify
             matrixChar = 'z';
-            // Notify
             notifyAboutRotChange();
             break;
     }
 }
 
-
-
-
-//----------------------------------------------------------------------------
-// Idle Function
-//----------------------------------------------------------------------------
-
+/**
+ * Idle Callback Function. Called every time window is idle.
+ */
 void idle(void) {
     /*
     Calling glutPostRedisplay tells GLUT that the window needs to be redisplayed. Here we call
@@ -248,20 +260,24 @@ int main(int argc, char **argv) {
     printf("\nPress X, Y or Z to switch rotational axis.");
     printf("\n");
 
+    // Set up program
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
     glutInitWindowSize(256, 256);
     glutInitContextVersion(3, 2);
     glutInitContextProfile(GLUT_CORE_PROFILE);
     glutCreateWindow("CITS3003 Lab 2 Rotate Square - 4x4 Matrix by DC");
+    glewInit();
 
-    glewInit(); // optional for Linux
-
+    // Initialize program
     init();
 
+    // Register callback functions
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
     glutIdleFunc(idle);
+
+    // Enter main event loop
     glutMainLoop();
     return 0;
 }
