@@ -200,12 +200,7 @@ void display(void) {
 
     // Draw vertices as triangles
     // https://docs.gl/gl4/glDrawArrays
-    // For each square wanted
-    for (int i = 0; i < 3; i++) {
-
-        // Draw square
-        glDrawArrays(GL_TRIANGLES, 0, NumPoints);
-    }
+    glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
     // Double buffering
     glutSwapBuffers();
