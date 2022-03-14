@@ -11,12 +11,14 @@ const int numPoints = 8;
  * Initialization function
  */
 void initS(void) {
+
     // Create vertices
     vec3 points[numPoints] = {
         vec3(0.0f, 1.0f, 0.0f),
         vec3(0.5f, 0.5f, 0.0f),
         vec3(1.0f, 0.0f, 0.0f),
         vec3(0.5f, -0.5f, 0.0f),
+        
         vec3(0.0f, -1.0f, 0.0f),
         vec3(-0.5f, -0.5f, 0.0f),
         vec3(-1.0f, 0.0f, 0.0f),
@@ -24,14 +26,14 @@ void initS(void) {
     };
 
     // Create VAO
-    GLuint vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    GLuint vao; // Holder
+    glGenVertexArrays(1, &vao); // Define type
+    glBindVertexArray(vao); // Bind
 
     // Create VBO
-    GLuint vbo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    GLuint vbo; // Holder
+    glGenBuffers(1, &vbo);  // Define type
+    glBindBuffer(GL_ARRAY_BUFFER, vbo); // Bind
 
     // Initialise vertex buffer to hold circlePoints
     glBufferData(GL_ARRAY_BUFFER, sizeof (points), points, GL_STATIC_DRAW);
@@ -45,6 +47,7 @@ void initS(void) {
     GLuint vPos = glGetAttribLocation(program, "vPosition");
     glEnableVertexAttribArray(vPos);
 
+    // 3 = because we are using vec3's
     // GL_FLOAT = Type of vertex positions
     // GL_FALSE = The data does not need normalization
     // 0 = There is no stride. Every point is drawn
@@ -66,8 +69,12 @@ void displayS(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw the vertices
+    // GL_LINE_LOOP = Drawing mode
     // 0 = Specifies the starting index in the enabled array 
     glDrawArrays(GL_LINE_LOOP, 0, numPoints);
+
+    // Draw as triangles
+    // glDrawArrays(GL_TRIANGLES, 0, numPoints);
 
     // Draw now and flush the buffers
     glFlush();
@@ -77,7 +84,8 @@ void displayS(void) {
  * Main function
  */
 int main(int argc, char** argv) {
-    // Title
+    
+    // Title string
     const char* title = "PurpleDiamond-DC";
 
     // Starting message

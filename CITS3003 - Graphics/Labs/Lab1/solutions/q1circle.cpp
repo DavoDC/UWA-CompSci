@@ -27,8 +27,10 @@ void init(void)
         //   and the previous point
         points[i] = (points[i - 1] + vertices[j]) / 2.0;
         
-        // CITS3003 Lab1 q1circle: Added the following two lines (and nothing
-        // else)
+        // SOLUTION
+        // CITS3003 Lab1 SOLUTION q1circle: 
+        // Added the following two lines (and nothing else)
+	// If point length exceeds 1 , generate another
         if (length(points[i]) > 1.0)
           i--;
     }
