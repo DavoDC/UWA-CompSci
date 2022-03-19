@@ -1,3 +1,9 @@
+
+/*
+ * This the old/original diamond code
+ * Find newest version here: https://github.com/DavoDC/CITS3003_Template/tree/main/Lab1
+ */
+
 // Printing
 #include <iostream>
 
