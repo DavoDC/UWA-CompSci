@@ -557,7 +557,7 @@ void display(void) {
                 so.diffuse * rgb);
         CheckError();
 
-		// ### DC - Part H
+		// ### DC - Part H - Part 2
 		// The first half of the marks for Part H comes from separating the colour from the TEXTURE.		
 		// This the part that requires changes to the (fragment) shader as stated in the question.
 		//
