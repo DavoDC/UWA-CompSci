@@ -557,9 +557,28 @@ void display(void) {
                 so.diffuse * rgb);
         CheckError();
 
-        // Update specular component
-        glUniform4fv(glGetUniformLocation(shaderProgram, "SpecularProduct"), 1,
-                so.specular * rgb);
+		// ### DC - Part H
+		// The first half of the marks for Part H comes from separating the colour from the TEXTURE.		
+		// This the part that requires changes to the (fragment) shader as stated in the question.
+		//
+		// The second part of the marks comes from separating the colour from the OBJECT.
+		// The scene object colour is removed below: 
+        // 
+		// Calculate color WITHOUT OBJECT
+        // - Multiply RGB values
+		vec3 rgbSpecial = lightObj1.rgb * lightObj2.rgb; // REMOVED: so.rgb *
+        // - Apply brightness
+        rgbSpecial = rgbSpecial * so.brightness * lightObj1.brightness * lightObj2.brightness;
+        // - Apply constant
+        rgbSpecial = rgbSpecial * 2.0;
+		
+		// Update specular component
+		// OLD:
+        // glUniform4fv(glGetUniformLocation(shaderProgram, "SpecularProduct"), 1,
+        //        so.specular * rgb);
+		// NEW:
+		glUniform4fv(glGetUniformLocation(shaderProgram, "SpecularProduct"), 1,
+                  so.specular * rgbSpecial);
 
         // Update shininess
         glUniform1f(glGetUniformLocation(shaderProgram, "Shininess"), so.shine);
