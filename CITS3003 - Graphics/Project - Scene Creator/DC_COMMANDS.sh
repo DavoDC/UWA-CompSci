@@ -1,4 +1,6 @@
 
+# Dependencies
+# sudo apt install cmake libxmu-dev g++ libx11-dev libgl1-mesa-dev libglu1-mesa-dev xorg-dev
 
 # Clean before (only if needed)
 # cmake --build cmake-build --target clean

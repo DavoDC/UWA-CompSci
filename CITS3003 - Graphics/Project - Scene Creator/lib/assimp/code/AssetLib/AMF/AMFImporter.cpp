@@ -3,7 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2021, assimp team
+Copyright (c) 2006-2022, assimp team
 
 All rights reserved.
 
@@ -205,7 +205,7 @@ void AMFImporter::ParseHelper_FixTruncatedFloatString(const char *pInStr, std::s
 }
 
 static bool ParseHelper_Decode_Base64_IsBase64(const char pChar) {
-    return (isalnum(pChar) || (pChar == '+') || (pChar == '/'));
+    return (isalnum((unsigned char)pChar) || (pChar == '+') || (pChar == '/'));
 }
 
 void AMFImporter::ParseHelper_Decode_Base64(const std::string &pInputBase64, std::vector<uint8_t> &pOutputData) const {
@@ -268,7 +268,8 @@ void AMFImporter::ParseFile(const std::string &pFile, IOSystem *pIOHandler) {
     mXmlParser = new XmlParser();
     if (!mXmlParser->parse(file.get())) {
         delete mXmlParser;
-        throw DeadlyImportError("Failed to create XML reader for file" + pFile + ".");
+        mXmlParser = nullptr;
+        throw DeadlyImportError("Failed to create XML reader for file ", pFile, ".");
     }
 
     // Start reading, search for root tag <amf>
@@ -302,7 +303,7 @@ void AMFImporter::ParseNode_Root() {
     }
     XmlNode node = *root;
     mUnit = ai_tolower(std::string(node.attribute("unit").as_string()));
-    
+
     mVersion = node.attribute("version").as_string();
 
     // Read attributes for node <amf>.
@@ -502,23 +503,9 @@ void AMFImporter::ParseNode_Metadata(XmlNode &node) {
     mNodeElement_List.push_back(ne); // and to node element list because its a new object in graph.
 }
 
-bool AMFImporter::CanRead(const std::string &pFile, IOSystem *pIOHandler, bool pCheckSig) const {
-    const std::string extension = GetExtension(pFile);
-
-    if (extension == "amf") {
-        return true;
-    }
-
-    if (extension.empty() || pCheckSig) {
-        const char *tokens[] = { "<amf" };
-        return SearchFileHeaderForToken(pIOHandler, pFile, tokens, 1);
-    }
-
-    return false;
-}
-
-void AMFImporter::GetExtensionList(std::set<std::string> &pExtensionList) {
-    pExtensionList.insert("amf");
+bool AMFImporter::CanRead(const std::string &pFile, IOSystem *pIOHandler, bool /*pCheckSig*/) const {
+    static const char *tokens[] = { "<amf" };
+    return SearchFileHeaderForToken(pIOHandler, pFile, tokens, AI_COUNT_OF(tokens));
 }
 
 const aiImporterDesc *AMFImporter::GetInfo() const {
