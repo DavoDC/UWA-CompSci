@@ -489,6 +489,7 @@ void display(void) {
 
     // Clear the buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     // May report a harmless GL_INVALID_OPERATION with GLEW on the first frame
     CheckError();
 
@@ -522,10 +523,12 @@ void display(void) {
     glUniform4fv(glGetUniformLocation(shaderProgram, "LightPosition3"),
             1, lightPosition3);
     CheckError();
-    // Spotlight conesize (where -1 is large and 1 is small)
+
+    // Spotlight cone-size (where -1 is large and 1 is small)
     float spotSize = -0.8;
     glUniform1f(glGetUniformLocation(shaderProgram, "spotSize"), spotSize);
     CheckError();
+
     // Spotlight direction
     vec4 spotDir = view
             * RotateZ(sceneObjs[3].angles[2])
@@ -540,27 +543,54 @@ void display(void) {
         // Retrieve scene object
         SceneObject so = sceneObjs[i];
 
-        // Calculate color
-        // - Multiply RGB values
-        vec3 rgb = so.rgb * lightObj1.rgb * lightObj2.rgb;
-        // - Apply brightness
-        rgb = rgb * so.brightness * lightObj1.brightness * lightObj2.brightness;
-        // - Apply constant
-        rgb = rgb * 2.0;
 
+        // ### Get value needed for color calculation
+        // Get combined light color
+        vec3 lightRgb = lightObj1.rgb * lightObj2.rgb;
+
+        // Get combined brightness
+        vec3 totalB = so.brightness;
+        totalB = totalB * lightObj1.brightness * lightObj2.brightness;
+
+        // Combine previous values and multiply by constant
+        vec3 combined = totalB * lightRgb * 2.0;
+
+
+        // ### Calculate colors needed
+        // Calculate color WITH object color
+        vec3 rgbNorm = so.rgb * combined;
+
+        // Calculate color WITHOUT object color
+        vec3 rgbSpec = combined;
+
+
+        // ### Update four color components
         // Update ambient component
         glUniform4fv(glGetUniformLocation(shaderProgram, "AmbientProduct"), 1,
-                so.ambient * rgb);
+                so.ambient * rgbNorm);
 
         // Update diffuse component
         glUniform4fv(glGetUniformLocation(shaderProgram, "DiffuseProduct"), 1,
-                so.diffuse * rgb);
+                so.diffuse * rgbNorm);
         CheckError();
 
+        // ### DC - Part H - Part 2
+        // The first half of the marks for Part H comes from
+        // separating the color from the TEXTURE.
+        // This is the part that requires changes to the
+        // (fragment) shader as stated in the question.
+        //
+        // The second part of the marks comes from
+        // separating the color from the OBJECT.
+        // This occurs below because the color used (rgbSpec) 
+        // doesn't integrate the scene object color (so.rgb).
+        // Scroll up a bit to see this.
+        //
         // Update specular component
         glUniform4fv(glGetUniformLocation(shaderProgram, "SpecularProduct"), 1,
-                so.specular * rgb);
-
+                so.specular * rgbSpec);
+        CheckError();
+        
         // Update shininess
         glUniform1f(glGetUniformLocation(shaderProgram, "Shininess"), so.shine);
         CheckError();
@@ -992,7 +1022,7 @@ static void duplicateObject() {
     // Save current object
     SceneObject currO = sceneObjs[currObject];
 
-    // Change location slightly (so they are not inside eachother)
+    // Change location slightly (so they are not inside each other)
     currO.loc.x = currO.loc.x + 1.0;
 
     // Increase number of objects
@@ -1009,7 +1039,7 @@ static void duplicateObject() {
 }
 
 /**
- * Mainmenu callback
+ * Main menu callback
  * @param id
  */
 static void mainmenu(int id) {
@@ -1046,7 +1076,7 @@ static void mainmenu(int id) {
 static void quickSetObject(int num) {
 
     ///// Process input as new current object index
-    // Make empty string as array 
+    // Make empty string as array
     // (to prevent warning:
     // 'ISO C++ forbids converting a string constant to‘char*’warning)
     char empty[] = "";
@@ -1209,7 +1239,7 @@ int main(int argc, char* argv[]) {
 
     // My starting message
     printf("\n");
-    printf("\n ############ Welcome to David's CITS3003 Project ############");
+    printf("\n############ Welcome to David's CITS3003 Project ############");
     printf("\n");
 
     // Get the program name, excluding the directory, for the window title
