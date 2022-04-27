@@ -153,7 +153,9 @@ void display(void) {
             0.0, 0.0, 1.0, 0.0,
             0.0, 0.0, 0.0, 1.0);
 
-
+    // Do X and Y rotation at the same time
+    //mat4 currentMatrix = rotXm * rotYm;
+ 
     // Set which matrix to use
     mat4 currentMatrix = rotXm;
     if (matrixChar == 'x') {
