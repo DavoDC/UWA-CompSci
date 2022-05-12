@@ -9,7 +9,8 @@ CITS3003 - Graphics/Project - Scene Creator/start_scene
 
 # Ignore log file
 CITS3003 - Graphics/Project - Scene Creator/assimp_log.txt
-*.class
+
+############## CITS2200
 CITS2200 - Data Structures and Algorithms/nbproject/build-impl.xml
 CITS2200 - Data Structures and Algorithms/nbproject/genfiles.properties
 CITS2200 - Data Structures and Algorithms/nbproject/private/private.properties
