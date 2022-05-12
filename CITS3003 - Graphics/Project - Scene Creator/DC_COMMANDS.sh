@@ -26,6 +26,9 @@ cmake -S . -B cmake-build
 # >>>   Cannot find source file:
 # >>>     /home/david/GitHub_Repos/UWA-CompSci
 # >>>     /CITS3003 - Graphics/Project - Scene Creator/lib/glew/src/glew.c
-# It means that something went wrong with the repo,
-# and needed files are missing.
-# Try recloning or getting the project template files.
+# It means that project template files are missing.
+
+# Template is from:
+# https://github.com/Matthew-Chidlow/CITS3003_Project_Templat
+
+### END
