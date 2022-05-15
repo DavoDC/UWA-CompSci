@@ -83,12 +83,15 @@ void main()
     vec4 specular3 = Ks3 * SpecularProduct;  
 
     // ### DC - Part J - Spotlight Effect
+    // Theta Value. See https://learnopengl.com/Lighting/Light-casters
+    float thetaValue = dot(L3, normalize(spotDir.xyz)); 
     // If fragment is outside of spotlight cone
-    if( dot(L3, normalize(spotDir.xyz)) > spotSize) {
+    if(thetaValue > spotSize) {
+
         // Nullify light components
-	ambient3 = vec4(0.0, 0.0, 0.0, 0.0);
-	diffuse3 = vec4(0.0, 0.0, 0.0, 0.0);
-	specular3 = vec4(0.0, 0.0, 0.0, 0.0);
+        ambient3 = vec4(0.0, 0.0, 0.0, 0.0);
+        diffuse3 = vec4(0.0, 0.0, 0.0, 0.0);
+        specular3 = vec4(0.0, 0.0, 0.0, 0.0);
     }
 
     // Checks for specular component

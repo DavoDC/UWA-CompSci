@@ -530,6 +530,7 @@ void display(void) {
     CheckError();
 
     // Spotlight direction
+    // 1.0 in vec4 at end makes it point downwards?
     vec4 spotDir = view
             * RotateZ(sceneObjs[3].angles[2])
             * RotateY(sceneObjs[3].angles[1])

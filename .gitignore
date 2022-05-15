@@ -1,6 +1,36 @@
 
+############################ FILES TO IGNORE ############################ 
 
-############## CITS3003 Project
+
+############## GENERAL
+*.class
+
+
+############## CITS1001
+CITS1001 - OOP with Java/*/*/*.class
+
+
+############## CITS2200
+CITS2200 - Data Structures and Algorithms/build/classes/*.class
+CITS2200 - Data Structures and Algorithms/nbproject/build-impl.xml
+CITS2200 - Data Structures and Algorithms/nbproject/genfiles.properties
+CITS2200 - Data Structures and Algorithms/nbproject/private/private.properties
+CITS2200 - Data Structures and Algorithms/nbproject/private/private.xml
+CITS2200 - Data Structures and Algorithms/nbproject/project.properties
+
+
+############## CITS3001
+CITS3001 - Artificial Intelligence/Project - Three Chess AI/build/classes/threeChess/*.class
+CITS3001 - Artificial Intelligence/Project - Three Chess AI/build/classes/threeChess/*/*.class
+CITS3001 - Artificial Intelligence/Project - Three Chess AI/build/classes/threeChess/*/*/*.class
+CITS3001 - Artificial Intelligence/Labs/Lab1/NetBeans Project/build/classes/*/*.class
+
+############## CITS3002
+CITS3002 - Networks/Project - Transport Station - Client and Server/JavaProject/build/classes/*/*.class
+CITS3002 - Networks/Project - Transport Station - Client and Server/JavaProject/build/classes/*/*/*.class
+
+
+############## CITS3003
 # Ignore build files which need to be re-generated for each new path
 CITS3003 - Graphics/Project - Scene Creator/cmake-build/*
 
@@ -10,9 +40,12 @@ CITS3003 - Graphics/Project - Scene Creator/start_scene
 # Ignore log file
 CITS3003 - Graphics/Project - Scene Creator/assimp_log.txt
 
-############## CITS2200
-CITS2200 - Data Structures and Algorithms/nbproject/build-impl.xml
-CITS2200 - Data Structures and Algorithms/nbproject/genfiles.properties
-CITS2200 - Data Structures and Algorithms/nbproject/private/private.properties
-CITS2200 - Data Structures and Algorithms/nbproject/private/private.xml
-CITS2200 - Data Structures and Algorithms/nbproject/project.properties
+
+
+
+
+
+	
+
+
+
