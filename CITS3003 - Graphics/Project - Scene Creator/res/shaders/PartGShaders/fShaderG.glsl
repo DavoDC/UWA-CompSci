@@ -152,12 +152,13 @@ void main()
     vec4 color = globalAmbient;
     /// Light Source 1
     // DC - Part H - Removed specular (previously added after diffuse)
-    color.rgb = color.rgb + (attf1 * (ambient1 + diffuse1)).rgb;
+    color.rgb += (attf1 * (ambient1 + diffuse1)).rgb;
     /// Light Source 2
     // DC - Part I - Added second light source components (no attenuation)
-    color.rgb = color.rgb + (ambient2 + diffuse2).rgb;
+    color.rgb += (ambient2 + diffuse2).rgb;
     /// Light Source 3 (Spotlight) - Part J
-    color.rgb = color.rgb + (attf3 * (ambient3 + diffuse3)).rgb;
+    color.rgb += (attf3 * (ambient3 + diffuse3)).rgb;
+    // Set transparency to 1.0
     color.a = 1.0;
     
     
@@ -167,6 +168,5 @@ void main()
 
     // DC - Part H - Specular components are added separate from texture color
     vec4 totalSpec = (attf1 * specular1) + specular2 + specular3;
-    //gl_FragColor = gl_FragColor + totalSpec;
     gl_FragColor += totalSpec;
 }
