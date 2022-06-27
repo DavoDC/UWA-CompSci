@@ -530,11 +530,11 @@ void display(void) {
     CheckError();
 
     // Spotlight direction
-    // 1.0 in vec4 at end makes it point downwards?
+    // 1.0 in vec4 at end makes it point downwards
     vec4 spotDir = view
-            * RotateZ(sceneObjs[3].angles[2])
-            * RotateY(sceneObjs[3].angles[1])
-            * RotateX(sceneObjs[3].angles[0]) * vec4(0.0, 1.0, 0.0, 0.0);
+            * RotateZ(lightObj3.angles[2])
+            * RotateY(lightObj3.angles[1])
+            * RotateX(lightObj3.angles[0]) * vec4(0.0, 1.0, 0.0, 0.0);
     glUniform4fv(glGetUniformLocation(shaderProgram, "spotDir"), 1, spotDir);
     CheckError();
 
@@ -939,7 +939,7 @@ static void setObject() {
         // Get object ID
         int objID = so.meshId;
 
-        // If object ID is 0
+        // If object ID is 0 (Ground)
         if (objID == 0) {
             // Skip object
             continue;
