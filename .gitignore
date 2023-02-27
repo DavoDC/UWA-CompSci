@@ -25,12 +25,63 @@ CITS3001 - Artificial Intelligence/Project - Three Chess AI/build/classes/threeC
 CITS3001 - Artificial Intelligence/Project - Three Chess AI/build/classes/threeChess/*/*/*.class
 CITS3001 - Artificial Intelligence/Labs/Lab1/NetBeans Project/build/classes/*/*.class
 
+
 ############## CITS3002
 CITS3002 - Networks/Project - Transport Station - Client and Server/JavaProject/build/classes/*/*.class
 CITS3002 - Networks/Project - Transport Station - Client and Server/JavaProject/build/classes/*/*/*.class
 
 
 ############## CITS3003
+
+####### LABS
+# Ignore lab executables
+
+# Lab 1
+CITS3003 - Graphics/Labs/Lab1/sierpinski
+CITS3003 - Graphics/Labs/Lab1/scene
+CITS3003 - Graphics/Labs/Lab1/q1circle
+CITS3003 - Graphics/Labs/Lab1/diamond
+CITS3003 - Graphics/Labs/Lab1/coordinates
+
+# Lab 2
+CITS3003 - Graphics/Labs/Lab2/q2sqrotate
+CITS3003 - Graphics/Labs/Lab2/q1square
+CITS3003 - Graphics/Labs/Lab2/matrixRotation
+
+# Lab 3
+CITS3003 - Graphics/Labs/Lab3/gaskRotv3
+CITS3003 - Graphics/Labs/Lab3/gaskRotv2
+CITS3003 - Graphics/Labs/Lab3/gaskRotv1
+
+# Lab 4
+CITS3003 - Graphics/Labs/Lab4/solutions/q7shrinkXrotXrotYcube
+CITS3003 - Graphics/Labs/Lab4/solutions/q7rotXrotYshrinkXcube
+CITS3003 - Graphics/Labs/Lab4/solutions/q6rotYrotXcube
+CITS3003 - Graphics/Labs/Lab4/solutions/q6rotXrotYcube
+CITS3003 - Graphics/Labs/Lab4/solutions/q5genRot3d
+CITS3003 - Graphics/Labs/Lab4/solutions/q4cubesRot3d
+CITS3003 - Graphics/Labs/Lab4/solutions/q3sqsRot3d
+CITS3003 - Graphics/Labs/Lab4/solutions/q2sqsRot3d
+CITS3003 - Graphics/Labs/Lab4/solutions/q1sqRot3d
+CITS3003 - Graphics/Labs/Lab4/Q7/q7b
+CITS3003 - Graphics/Labs/Lab4/Q7/q7a
+CITS3003 - Graphics/Labs/Lab4/Q6/q6b
+CITS3003 - Graphics/Labs/Lab4/Q6/q6a
+CITS3003 - Graphics/Labs/Lab4/Q5/q5
+CITS3003 - Graphics/Labs/Lab4/Q4/q4
+CITS3003 - Graphics/Labs/Lab4/Q3/q3
+CITS3003 - Graphics/Labs/Lab4/Q2/q2
+CITS3003 - Graphics/Labs/Lab4/Q1/q1
+CITS3003 - Graphics/Labs/Lab4/EXTRA/spincube
+
+# Lab 5
+CITS3003 - Graphics/Labs/Lab5/Q4/q4
+CITS3003 - Graphics/Labs/Lab5/Q3/q3
+CITS3003 - Graphics/Labs/Lab5/Q2/q2
+CITS3003 - Graphics/Labs/Lab5/Q1/q1
+
+
+####### PROJECT
 # Ignore build files which need to be re-generated for each new path
 CITS3003 - Graphics/Project - Scene Creator/cmake-build/*
 
@@ -39,13 +90,3 @@ CITS3003 - Graphics/Project - Scene Creator/start_scene
 
 # Ignore log file
 CITS3003 - Graphics/Project - Scene Creator/assimp_log.txt
-
-
-
-
-
-
-	
-
-
-
